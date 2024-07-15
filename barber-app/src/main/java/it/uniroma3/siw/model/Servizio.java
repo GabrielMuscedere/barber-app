@@ -3,10 +3,8 @@ package it.uniroma3.siw.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "servizi")
 public abstract class Servizio {
 
     @Id
@@ -14,7 +12,10 @@ public abstract class Servizio {
 
     private double prezzo;
     private String descrizione;
-    private int duarta;
+    private int durata;
+
+    public Servizio() {
+    }
 
     public String getNome() {
         return nome;
@@ -40,12 +41,12 @@ public abstract class Servizio {
         this.descrizione = descrizione;
     }
 
-    public int getDuarta() {
-        return duarta;
+    public int getDurata() {
+        return durata;
     }
 
     public void setDuarta(int duarta) {
-        this.duarta = duarta;
+        this.durata = duarta;
     }
 
 }

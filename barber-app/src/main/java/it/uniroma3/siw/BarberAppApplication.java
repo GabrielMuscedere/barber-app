@@ -1,4 +1,4 @@
-package it.uniroma3.siw.barber_app;
+package it.uniroma3.siw;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
