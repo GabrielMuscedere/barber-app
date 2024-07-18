@@ -9,12 +9,15 @@ import org.springframework.stereotype.Service;
 public class ServizioService {
 
     @Autowired
-    private ServizioRepository servizioRepository   ;
+    private ServizioRepository servizioRepository;
+
+    public Iterable<Servizio> findAll() {
+        return servizioRepository.findAll();
+    }
 
 
     public Servizio findById(String id) {
         return servizioRepository.findById(id).get();
-
     }
 
 }

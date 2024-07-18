@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public abstract class Servizio {
+public class Servizio {
 
     @Id
     private String nome;

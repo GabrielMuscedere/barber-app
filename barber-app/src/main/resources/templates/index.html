@@ -12,10 +12,15 @@
 	<header>
 		<img src="/logo.png" alt="Logo Barber App">
 	</header>
-	<div></div>
+
 	<h1>Servizi Disponibili : </h1>
-	<div>
-	</div>
+	<div th:if="${servizi.isEmpty()}">Non ci sono film nel sistema</div>
+	<ul>
+		<li th:each="servizio : ${servizi}">
+			<span th:text="${servizio.nome}"></span> - <span th:text="${servizio.prezzo}"></span>
+		</li>
+	</ul>
+
 </body>
 
 </html>
