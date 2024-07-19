@@ -2,24 +2,47 @@
 <html>
 
 <head>
-	<title>
-		barber-app - Homepage
-	</title>
-	<link />
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="/css/styles.css">
+	<title>barber-app - Homepage</title>
 </head>
 
 <body>
+	<nav>
+		<div class="logo">
+			<a href="/">
+				<img src="images/logo.png" alt="Barber App Logo">
+			</a>
+		</div>
+		<ul>
+			<li><a href="/">Home</a></li>
+
+			<!--	<li><a href="/services">Servizi</a></li> -->
+			<li><a href="/about">Chi Siamo</a></li>
+			<li><a href="/contact">Contatti</a></li>
+			<!-- <li><a href="/book" class="btn">Prenota</a></li> -->
+		</ul>
+	</nav>
+
 	<header>
-		<img src="/logo.png" alt="Logo Barber App">
 	</header>
 
-	<h1>Servizi Disponibili : </h1>
-	<div th:if="${servizi.isEmpty()}">Non ci sono film nel sistema</div>
-	<ul>
-		<li th:each="servizio : ${servizi}">
-			<span th:text="${servizio.nome}"></span> - <span th:text="${servizio.prezzo}"></span>
-		</li>
-	</ul>
+	<section>
+		<h1>Servizi Disponibili : </h1>
+		<div th:if="${servizi.isEmpty()}">Non ci sono film nel sistema</div>
+		<ul>
+			<li th:each="servizio : ${servizi}">
+				<span th:text="${servizio.nome}"></span> - <span th:text="${servizio.prezzo}"></span>
+			</li>
+		</ul>
+	</section>
+
+	<footer>
+
+
+	</footer>
+
+
 
 </body>
 

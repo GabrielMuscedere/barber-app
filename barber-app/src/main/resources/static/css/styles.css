@@ -1,0 +1,60 @@
+/* Navbar */
+nav {
+    background-color: #f0f0f0; /* Cambia il colore per abbinarlo al logo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1% 2%;
+    height: 80px; /* Altezza fissa per la navbar */
+}
+
+nav .logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+nav .logo img {
+    max-height: 100%; /* Adatta il logo all'altezza della navbar */
+    max-width: 100px; /* Imposta una larghezza massima per il logo */
+    cursor: pointer;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 1%;
+}
+
+nav ul li a {
+    color: #000; /* Cambia il colore del testo a nero */
+    text-decoration: none;
+    padding: 1% 2%;
+    transition: background 0.3s;
+    white-space: nowrap; /* Evita la rottura del testo */
+}
+
+nav ul li a:hover {
+    background-color: #e0e0e0; /* Colore di sfondo al passaggio del mouse */
+    border-radius: 4px;
+}
+
+.btn {
+    background-color: #e8491d;
+    color: #fff;
+    padding: 1% 2%;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #c7401a;
+}
