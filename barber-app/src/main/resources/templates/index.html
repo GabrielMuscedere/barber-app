@@ -3,29 +3,37 @@
 
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/css/styles.css">
 	<title>barber-app - Homepage</title>
 </head>
 
 <body>
-	<nav>
-		<div class="logo">
-			<a href="/">
-				<img src="images/logo.png" alt="Barber App Logo">
+<header>
+	<nav class="navbar" >
+		<a href="/" class="logo">
+			<img src="/images/logo.png" alt="Logo">
+		</a>
+		<div class="nav-links">
+			<a href="/">Home</a>
+			<a href="/about">Chi Siamo</a>
+			<a href="/contact">Contatti</a>
+			<a href="/profile" class="user-icon">
+				<img src="/images/profile1.png" alt="profile">
 			</a>
 		</div>
-		<ul>
-			<li><a href="/">Home</a></li>
-
-			<!--	<li><a href="/services">Servizi</a></li> -->
-			<li><a href="/about">Chi Siamo</a></li>
-			<li><a href="/contact">Contatti</a></li>
-			<!-- <li><a href="/book" class="btn">Prenota</a></li> -->
-		</ul>
 	</nav>
-
-	<header>
-	</header>
+</header>
+<div class="carousel-container">
+	<div id="flex-container" class="flex-container">
+		<div class="flex-item"><img src="/images/barba_uomo.png" alt="Barba Uomo"></div>
+		<div class="flex-item"><img src="/images/shampo_uomo.png" alt="Shampoo Uomo"></div>
+		<div class="flex-item"><img src="/images/taglio_uomo.png" alt="Taglio Uomo"></div>
+		<div class="flex-item"><img src="/images/salone1.png" alt="Altro Servizio"></div>
+		<div class="flex-item"><img src="/images/salone2.png" alt="Altro Servizio"></div>
+	</div>
+</div>
+<script src="/js/script.js"></script>
 
 	<section>
 		<h1>Servizi Disponibili : </h1>
