@@ -51,6 +51,43 @@ header {
     height: auto;
 }
 
+/* Menu a tendina */
+.user-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.user-menu .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px; /* Bordi arrotondati */
+    overflow: hidden; /* Evita che il contenuto trabocchi */
+    padding: 10px 0; /* Aggiungi padding verticale */
+}
+
+.user-menu .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center; /* Centra verticalmente */
+    transition: background-color 0.3s ease; /* Transizione di colore di sfondo */
+}
+
+.user-menu .dropdown-content a:hover {
+    background-color: #f0f0f0; /* Colore di sfondo al passaggio del mouse */
+}
+
+.user-menu:hover .dropdown-content {
+    display: block;
+}
+
 .carousel-container {
     width: 100%;
     overflow: hidden;
