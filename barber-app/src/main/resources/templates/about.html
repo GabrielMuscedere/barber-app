@@ -3,37 +3,40 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>barber-app - Homepage</title>
+    <title>barber-app - about</title>
 </head>
 
 <body>
-<nav>
-    <div class="logo">
-        <a href="/">
-            <img src="images/logo.png" alt="Barber App Logo">
-        </a>
-    </div>
-    <ul>
-        <li><a href="/">Home</a></li>
-
-        <!--	<li><a href="/services">Servizi</a></li> -->
-        <li><a href="/about">Chi Siamo</a></li>
-        <li><a href="/contact">Contatti</a></li>
-        <!-- <li><a href="/book" class="btn">Prenota</a></li> -->
-    </ul>
-
-</nav>
-
 <header>
+    <nav class="navbar" >
+        <a href="/" class="logo">
+            <img src="/images/logo.png" alt="Logo">
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">Chi Siamo</a>
+            <a href="/contact">Contatti</a>
+            <div class="user-menu">
+                <a href="/profile" class="user-icon">
+                    <img src="/images/profile1.png" alt="profile">
+                </a>
+                <div class="dropdown-content">
+                    <a href="/register">Registrati</a>
+                    <a href="/login">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 </header>
 
-<section>
-</section>
 
 <footer>
+
+
 </footer>
 
-</body>
 
-</html>
+
+</body>

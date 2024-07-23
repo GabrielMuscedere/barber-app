@@ -1,8 +1,7 @@
 package it.uniroma3.siw.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 
@@ -10,21 +9,27 @@ import java.sql.Date;
 public class Barbiere {
 
     @Id
-    private String cod_fiscale;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String nome;
     private String cognome;
     private Date dataNascita;
 
+    @OneToOne
+    private Credential credenziali;
+
+
+
     public Barbiere() {
     }
 
-    public String getCod_fiscale() {
-        return cod_fiscale;
+    public Long getId() {
+        return id;
     }
 
-    public void setCod_fiscale(String cod_fiscale) {
-        this.cod_fiscale = cod_fiscale;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
