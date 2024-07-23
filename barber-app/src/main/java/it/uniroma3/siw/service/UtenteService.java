@@ -13,7 +13,12 @@ public class UtenteService {
     private UtenteRepository utenteRepository;
 
     public Utente findById(Long id) {
-
         return utenteRepository.findById(id).get();
     }
+
+    public Utente save(Utente utente) {
+        return utenteRepository.save(utente);
+    }
+
+
 }

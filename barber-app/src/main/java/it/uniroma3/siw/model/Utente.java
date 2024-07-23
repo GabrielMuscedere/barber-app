@@ -31,9 +31,9 @@ public class Utente {
     @Email
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL, targetEntity = Credential.class, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
+    //@OneToOne(cascade = CascadeType.ALL, targetEntity = Credential.class, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
     // @JoinColumn(name = "credenziali_id", referencedColumnName = "id", nullable = false, unique = true)
-    private Credential credential;
+    //private Credential credential;
 
 
     public Long getId() {
@@ -84,6 +84,7 @@ public class Utente {
         this.email = email;
     }
 
+    /*
     public Credential getCredential() {
         return credential;
     }
@@ -91,4 +92,5 @@ public class Utente {
     public void setCredential(Credential credential) {
         this.credential = credential;
     }
+     */
 }

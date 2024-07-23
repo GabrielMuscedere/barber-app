@@ -12,9 +12,4 @@ public class AutoController {
         return "about";
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
-
 }
