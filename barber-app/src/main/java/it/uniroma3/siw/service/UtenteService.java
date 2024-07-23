@@ -1,6 +1,5 @@
 package it.uniroma3.siw.service;
 
-import it.uniroma3.siw.model.Barbiere;
 import it.uniroma3.siw.model.Utente;
 import it.uniroma3.siw.repository.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ public class UtenteService {
         return utenteRepository.findById(id).get();
     }
 
-    public Utente save(Utente utente) {
+    public Utente saveUtente(Utente utente) {
         return utenteRepository.save(utente);
     }
 
