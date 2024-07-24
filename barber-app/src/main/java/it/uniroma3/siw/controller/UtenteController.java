@@ -22,7 +22,7 @@ public class UtenteController {
         return "register";
     }
 
-        @PostMapping("/register")
+    @PostMapping("/register")
     public String newUtente(@ModelAttribute("utente") Utente utente) {
         this.utenteService.saveUtente(utente);
         return "redirect:profile/" + utente.getId();
@@ -34,4 +34,5 @@ public class UtenteController {
         model.addAttribute("utente", utente);
         return "profile";
     }
+
 }

@@ -29,8 +29,8 @@ header {
     align-items: center;
     justify-content: flex-end;
     flex-grow: 1;
-    margin-left: auto; /* Allinea al centro con spazio a sinistra */
-    margin-right: auto; /* Allinea al centro con spazio a destra */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .navbar .nav-links a {
@@ -52,7 +52,6 @@ header {
     height: auto;
 }
 
-/* Menu a tendina */
 .user-menu {
     position: relative;
     display: inline-block;
@@ -66,9 +65,9 @@ header {
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    border-radius: 5px; /* Bordi arrotondati */
-    overflow: hidden; /* Evita che il contenuto trabocchi */
-    padding: 10px 0; /* Aggiungi padding verticale */
+    border-radius: 5px;
+    overflow: hidden;
+    padding: 10px 0;
 }
 
 .user-menu .dropdown-content a {
@@ -76,13 +75,13 @@ header {
     padding: 12px 16px;
     text-decoration: none;
     display: flex;
-    justify-content: center; /* Centra orizzontalmente */
-    align-items: center; /* Centra verticalmente */
-    transition: background-color 0.3s ease; /* Transizione di colore di sfondo */
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
 }
 
 .user-menu .dropdown-content a:hover {
-    background-color: #f0f0f0; /* Colore di sfondo al passaggio del mouse */
+    background-color: #f0f0f0;
 }
 
 .user-menu:hover .dropdown-content {
@@ -94,19 +93,19 @@ header {
     overflow: hidden;
     box-sizing: border-box;
     display: flex;
-    justify-content: center; /* Centra le immagini */
+    justify-content: center;
 }
 
 .flex-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: calc(100% * 3); /* Assicura che la larghezza totale sia il 300% del contenitore per 3 immagini */
+    width: calc(100% * 3);
 }
 
 .flex-item {
-    flex: 0 0 calc(100% / 3); /* 33.33% per ciascuna delle 3 immagini visibili */
+    flex: 0 0 calc(100% / 3);
     box-sizing: border-box;
-    padding: 10px; /* Aggiungi padding per distanziare le immagini */
+    padding: 10px;
 }
 
 .flex-item img {
@@ -118,17 +117,16 @@ header {
 
 @media screen and (max-width: 768px) {
     .flex-item {
-        flex: 0 0 50%; /* 2 immagini per riga su schermi più piccoli */
+        flex: 0 0 50%;
     }
 }
 
 @media screen and (max-width: 480px) {
     .flex-item {
-        flex: 0 0 100%; /* 1 immagine per riga su schermi molto piccoli */
+        flex: 0 0 100%;
     }
 }
 
-/* Stile per il form di registrazione */
 .registration-form {
     max-width: 500px;
     margin: 50px auto;
@@ -188,4 +186,31 @@ header {
 
 .registration-form input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.profile-box {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-box h2 {
+    text-align: center;
+    color: #333;
+}
+
+.profile-box p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
 }

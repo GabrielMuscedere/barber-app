@@ -30,13 +30,19 @@
         </div>
     </nav>
 </header>
+<div class="profile-container" th:if="${utente}">
+    <div class="profile-box">
+        <h2 th:text="${utente.nome} + ' ' + ${utente.cognome}">Nome e Cognome</h2>
+        <p>Data di nascita: <span th:text="${utente.dataNascita}">Data di nascita</span></p>
+        <p>Email: <span th:text="${utente.email}">Email</span></p>
+    </div>
+</div>
 
-
+<div th:unless="${utente}" class="profile-container">
+    <div class="profile-box">
+        <h2>Utente non trovato</h2>
+    </div>
+</div>
 <footer>
-
-
 </footer>
-
-
-
 </body>
