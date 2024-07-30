@@ -1,6 +1,6 @@
 package it.uniroma3.siw.model;
 
-
+import it.uniroma3.siw.model.Utente;
 import jakarta.persistence.*;
 import jdk.jfr.Unsigned;
 
@@ -20,8 +20,11 @@ public class Credential {
     @Column(name = "password", nullable = false)
     private String password;
 
-    //@Column(name = "role", nullable = false)
-    //private String role;
+    @Column(name = "role", nullable = false)
+    private String role;
+
+    @OneToOne
+    private Utente utente;
 
     public Credential() {
     }
