@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<html>
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Profilo Utente</title>
     <link rel="stylesheet" href="/css/styles.css">
-    <title>barber-app - contatti</title>
 </head>
-
 <body>
 <header>
-    <nav class="navbar" >
+    <nav class="navbar">
         <a href="/" class="logo">
             <img src="/images/logo.png" alt="Logo">
         </a>
@@ -22,21 +19,20 @@
                 <a href="/profile" class="user-icon">
                     <img src="/images/profile1.png" alt="profile">
                 </a>
-                <div class="dropdown-content">
-                    <a href="/register">Registrati</a>
-                    <a href="/login">Login</a>
-                </div>
             </div>
         </div>
     </nav>
 </header>
-
-
+<div class="profile-container">
+    <div class="profile-box">
+        <h2>Profilo di <span th:text="${user.nome}">Nome Utente</span></h2>
+        <p>Nome: <span th:text="${user.nome}">Nome</span></p>
+        <p>Cognome: <span th:text="${user.cognome}">Cognome</span></p>
+        <p>Email: <span th:text="${user.email}">Email</span></p>
+        <p>Username: <span th:text="${user.username}">Username</span></p>
+    </div>
+</div>
 <footer>
-
-
 </footer>
-
-
-
 </body>
+</html>

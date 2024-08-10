@@ -127,7 +127,8 @@ header {
     }
 }
 
-.registration-form {
+.registration-form,
+.login-form {
     max-width: 500px;
     margin: 50px auto;
     padding: 20px;
@@ -136,14 +137,16 @@ header {
     border-radius: 8px;
 }
 
-.registration-form h2 {
+.registration-form h2,
+.login-form h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
     color: #333;
 }
 
-.registration-form label {
+.registration-form label,
+.login-form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
@@ -154,7 +157,9 @@ header {
 .registration-form input[type="date"],
 .registration-form input[type="email"],
 .registration-form input[type="tel"],
-.registration-form input[type="password"] {
+.registration-form input[type="password"],
+.login-form input[type="text"],
+.login-form input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -167,12 +172,15 @@ header {
 .registration-form input[type="date"]:focus,
 .registration-form input[type="email"]:focus,
 .registration-form input[type="tel"]:focus,
-.registration-form input[type="password"]:focus {
+.registration-form input[type="password"]:focus,
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
     border-color: #007bff;
     outline: none;
 }
 
-.registration-form input[type="submit"] {
+.registration-form input[type="submit"],
+.login-form input[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: #007bff;
@@ -184,7 +192,8 @@ header {
     transition: background-color 0.3s ease;
 }
 
-.registration-form input[type="submit"]:hover {
+.registration-form input[type="submit"]:hover,
+.login-form input[type="submit"]:hover {
     background-color: #0056b3;
 }
 

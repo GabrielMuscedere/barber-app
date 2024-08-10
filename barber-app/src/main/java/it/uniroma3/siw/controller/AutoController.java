@@ -12,4 +12,9 @@ public class AutoController {
         return "about";
     }
 
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
 }

@@ -1,22 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>barber-app - Login</title>
 </head>
 <body>
-<h1>Login</h1>
-<form th:action="@{/login}" method="post">
-    <div>
-        <label>Username:</label>
-        <input type="text" name="username" />
+<header>
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <img src="/images/logo.png" alt="Logo">
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">Chi Siamo</a>
+            <a href="/contact">Contatti</a>
+            <div class="user-menu">
+                <a href="/profile" class="user-icon">
+                    <img src="/images/profile1.png" alt="profile">
+                </a>
+                <div class="dropdown-content">
+                    <a href="/register">Registrati</a>
+                    <a href="/login">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div>
+    <div class="form-container login-form">
+        <h2>Login</h2>
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login">
+            </div>
+        </form>
     </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password" />
-    </div>
-    <div>
-        <button type="submit">Login</button>
-    </div>
-</form>
+</div>
+<footer>
+</footer>
 </body>
 </html>
