@@ -17,7 +17,7 @@ public class Barbiere {
     private Date dataNascita;
 
     @OneToOne
-    private Credential credenziali;
+    private Credentials credenziali;
 
 
 

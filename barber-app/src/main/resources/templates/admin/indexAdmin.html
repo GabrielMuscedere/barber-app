@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>barber-app - Homepage</title>
+</head>
+
+<body>
+<header>
+    <nav class="navbar" >
+        <a href="/" class="logo">
+            <img src="/images/logo.png" alt="Logo">
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">Chi Siamo</a>
+            <a href="/contact">Contatti</a>
+            <div class="user-menu">
+                <a href="/profile" class="user-icon">
+                    <img src="/images/profile1.png" alt="profile">
+                </a>
+                <div class="dropdown-content">
+                    <a href="/register">Registrati</a>
+                    <a href="/login">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<h1>ADMIN INDEX</h1>
+<div class="carousel-container">
+    <div id="flex-container" class="flex-container">
+        <div class="flex-item"><img src="/images/barba_uomo.png" alt="Barba Uomo"></div>
+        <div class="flex-item"><img src="/images/shampo_uomo.png" alt="Shampoo Uomo"></div>
+        <div class="flex-item"><img src="/images/taglio_uomo.png" alt="Taglio Uomo"></div>
+        <div class="flex-item"><img src="/images/salone1.png" alt="Altro Servizio"></div>
+        <div class="flex-item"><img src="/images/salone2.png" alt="Altro Servizio"></div>
+    </div>
+</div>
+<script src="/js/scorrimento.js"></script>
+<section>
+    <h1>Servizi Disponibili : </h1>
+    <div th:if="${servizi.isEmpty()}">Non ci sono film nel sistema</div>
+    <ul>
+        <li th:each="servizio : ${servizi}">
+            <span th:text="${servizio.nome}"></span> - <span th:text="${servizio.prezzo}"></span>
+        </li>
+    </ul>
+</section>
+<footer>
+</footer>
+</body>
+
+</html>

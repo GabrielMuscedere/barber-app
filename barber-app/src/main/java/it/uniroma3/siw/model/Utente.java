@@ -31,11 +31,6 @@ public class Utente {
     @Email
     private String email;
 
-    //@OneToOne(cascade = CascadeType.ALL, targetEntity = Credential.class, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
-    // @JoinColumn(name = "credenziali_id", referencedColumnName = "id", nullable = false, unique = true)
-    //private Credential credential;
-
-
     public Long getId() {
         return id;
     }

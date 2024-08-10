@@ -15,7 +15,7 @@ public class UtenteService {
         return utenteRepository.findById(id).get();
     }
 
-    public Utente saveUtente(Utente utente) {
+    public Utente save(Utente utente) {
         return utenteRepository.save(utente);
     }
 

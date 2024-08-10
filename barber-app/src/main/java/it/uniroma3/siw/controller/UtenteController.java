@@ -16,6 +16,7 @@ public class UtenteController {
     @Autowired
     private UtenteService utenteService;
 
+    /*
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("utente", new Utente());
@@ -27,6 +28,7 @@ public class UtenteController {
         this.utenteService.saveUtente(utente);
         return "redirect:profile/" + utente.getId();
     }
+    */
 
     @GetMapping("/profile/{id}")
     public String viewProfile(@PathVariable("id") Long id, Model model) {
