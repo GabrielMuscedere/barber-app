@@ -1,8 +1,11 @@
 package it.uniroma3.siw.controller;
 
+import it.uniroma3.siw.model.CustomUserDetails;
 import it.uniroma3.siw.model.Utente;
 import it.uniroma3.siw.service.UtenteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,5 +37,6 @@ public class UtenteController {
         model.addAttribute("utente", utente);
         return "profile";
     }
+
 
 }

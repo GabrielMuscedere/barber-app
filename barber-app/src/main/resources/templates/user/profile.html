@@ -7,7 +7,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar">
+    <nav class="navbar" >
         <a href="/" class="logo">
             <img src="/images/logo.png" alt="Logo">
         </a>
@@ -16,21 +16,37 @@
             <a href="/about">Chi Siamo</a>
             <a href="/contact">Contatti</a>
             <div class="user-menu">
-                <a href="/profile" class="user-icon">
+                <a class="user-icon">
                     <img src="/images/profile1.png" alt="profile">
                 </a>
+                <div class="dropdown-content">
+                    <!-- Check if user is authenticated -->
+                    <div th:if="${authentication != null}">
+                        <!-- Display the profile link and the username -->
+                        <a href="/profile">
+                            <span th:text="${authentication.getUsername()}">Profile</span>
+                        </a>
+                        <a href="/logout"><span>logout</span></a>
+                    </div>
+                    <!-- Display register and login links if user is not authenticated -->
+                    <div th:if="${authentication == null}">
+                        <a href="/register">Registrati</a>
+                        <a href="/login">Login</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 </header>
+PROFILO DEFAULT
+<!--
 <div class="profile-container">
     <div class="profile-box">
-        <h2>Profilo di <span th:text="${user.nome}">Nome Utente</span></h2>
-        <p>Nome: <span th:text="${user.nome}">Nome</span></p>
-        <p>Cognome: <span th:text="${user.cognome}">Cognome</span></p>
-        <p>Email: <span th:text="${user.email}">Email</span></p>
-        <p>Username: <span th:text="${user.username}">Username</span></p>
+        <p>Nome: <span th:text="${utente.nome}"></span></p>
+        <p>Cognome: <span th:text="${utente.cognome}"></span></p>
+        <p>Email: <span th:text="${utente.email}"></span></p>
     </div>
+    -->
 </div>
 <footer>
 </footer>

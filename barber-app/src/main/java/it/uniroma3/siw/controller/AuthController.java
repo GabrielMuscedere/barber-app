@@ -1,6 +1,9 @@
 package it.uniroma3.siw.controller;
 
+import it.uniroma3.siw.repository.CredentialsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +25,9 @@ public class AuthController {
     private CredentialsService credentialsService;
 
     @Autowired
+    private CredentialsRepository credentialsRepository;
+
+    @Autowired
     private UtenteService utenteService;
 
     @Autowired
@@ -35,22 +41,26 @@ public class AuthController {
     }
 
     @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
-    public String registerUser(@ModelAttribute("utente") Utente utente,
-                               @ModelAttribute("credentials") Credentials credentials,
-                               BindingResult bindingResult, Model model) {
+    public String registerUser(@ModelAttribute("utente") Utente utente, @ModelAttribute("credentials") Credentials credentials, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             return "register";
         }
         utenteService.save(utente);
-        credentials.setUtente(utente);
-        credentials.setPassword(passwordEncoder.encode(credentials.getPassword()));
-        credentials.setRole(Credentials.DEFAULT_ROLE);
-        credentialsService.save(credentials);
+        credentialsService.save(credentials, utente);
         return "redirect:/login";
     }
+
     @GetMapping("/login")
     public String showLoginForm(Model model) {
         return "login";
     }
+
+    /* Se hai già un metodo per mostrare il profilo, rinominalo o cambiane la rotta
+    @GetMapping("/auth/profile")
+    public String showAuthProfile(Model model) {
+        // Logica per mostrare il profilo
+        return "/user/profile";
+    }
+    */
 
 }

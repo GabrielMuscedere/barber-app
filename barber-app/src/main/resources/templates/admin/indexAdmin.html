@@ -42,13 +42,7 @@
 </div>
 <script src="/js/scorrimento.js"></script>
 <section>
-    <h1>Servizi Disponibili : </h1>
-    <div th:if="${servizi.isEmpty()}">Non ci sono film nel sistema</div>
-    <ul>
-        <li th:each="servizio : ${servizi}">
-            <span th:text="${servizio.nome}"></span> - <span th:text="${servizio.prezzo}"></span>
-        </li>
-    </ul>
+    <h1>Pagina dell'admin: </h1>
 </section>
 <footer>
 </footer>

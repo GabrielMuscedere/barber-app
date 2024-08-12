@@ -16,9 +16,11 @@ public class ServizioController {
     @Autowired
     private ServizioService servizioService;
 
+    /*
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("servizi", this.servizioService.findAll());
         return "index";
     }
+    */
 }
