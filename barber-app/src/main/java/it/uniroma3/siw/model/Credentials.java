@@ -6,9 +6,6 @@ import jdk.jfr.Unsigned;
 @Entity
 public class Credentials {
 
-    public static final String DEFAULT_ROLE = "ROLE_DEFAULT";
-    public static final String ADMIN_ROLE = "ROlE_ADMIN";
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

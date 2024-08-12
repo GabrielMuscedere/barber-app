@@ -20,7 +20,7 @@ public class CredentialsService {
     @Transactional
     public Credentials save(Credentials credentials, Utente utente) {
         credentials.setUtente(utente);
-        credentials.setRole(Credentials.DEFAULT_ROLE);
+        credentials.setRole("ROLE_DEFAULT");
         credentials.setUsername(credentials.getUsername());
         credentials.setPassword(passwordEncoder.encode(credentials.getPassword()));
         return credentialsRepository.save(credentials);
