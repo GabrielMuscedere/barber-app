@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>barber-app - Admin HomePage</title>
+    <title>barber-app - AdminProfile</title>
 </head>
 
 <body>
@@ -16,7 +16,6 @@
         </a>
         <div class="nav-links">
             <a href="/admin/indexAdmin">Home</a>
-            <a href="/admin/addBarber">Aggiungi Barbieri</a>
             <div class="user-menu">
                 <a class="user-icon">
                     <img src="/images/profile1.png" alt="profile">
@@ -25,7 +24,7 @@
                     <!-- Check if user is authenticated -->
                     <div th:if="${authentication != null}">
                         <!-- Display the profile link and the username -->
-                        <a href="/admin/profile">
+                        <a href="/profile">
                             <span th:text="${authentication.getUsername()}">Profile</span>
                         </a>
                         <a href="/logout"><span>logout</span></a>
@@ -40,22 +39,13 @@
         </div>
     </nav>
 </header>
-<h1>ADMIN INDEX</h1>
-<div class="carousel-container">
-    <div id="flex-container" class="flex-container">
-        <div class="flex-item"><img src="/images/barba_uomo.png" alt="Barba Uomo"></div>
-        <div class="flex-item"><img src="/images/shampo_uomo.png" alt="Shampoo Uomo"></div>
-        <div class="flex-item"><img src="/images/taglio_uomo.png" alt="Taglio Uomo"></div>
-        <div class="flex-item"><img src="/images/salone1.png" alt="Altro Servizio"></div>
-        <div class="flex-item"><img src="/images/salone2.png" alt="Altro Servizio"></div>
-    </div>
-</div>
-<script src="/js/scorrimento.js"></script>
-<section>
-    <h1>Pagina dell'admin: </h1>
-</section>
-<footer>
-</footer>
-</body>
 
-</html>
+PROFILO DELL'ADMIN
+<footer>
+
+
+</footer>
+
+
+
+</body>

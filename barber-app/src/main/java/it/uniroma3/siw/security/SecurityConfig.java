@@ -58,12 +58,12 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/admin/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/user/**").hasRole("DEFAULT")
                         .requestMatchers("/profile").authenticated()
-                        .requestMatchers("/redirectByRole").authenticated() // Ensure this is included
+                        .requestMatchers(HttpMethod.GET,"/redirectByRole").authenticated() // Ensure this is included
                         .requestMatchers(HttpMethod.GET, "/logout").authenticated() // Permetti l'accesso a /logout senza autenticazione
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
-                        .defaultSuccessUrl("/", true)
+                        .defaultSuccessUrl("/redirectByRole", true)
                         .failureUrl("/login?error=true")
                 )
                 .logout(logout -> logout

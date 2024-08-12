@@ -223,3 +223,78 @@ header {
     color: #555;
     margin-bottom: 10px;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.left-column, .right-column {
+    width: 48%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-item {
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+    text-align: center;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: #000;
+    font-size: 2em;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+.carousel-item {
+    display: none;
+    text-align: center;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+.carousel-container p {
+    text-align: center;
+    font-size: 1.2em;
+    color: #333;
+}

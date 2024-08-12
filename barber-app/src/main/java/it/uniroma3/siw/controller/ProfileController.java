@@ -33,10 +33,10 @@ public class ProfileController {
             Credentials credentials = customUserDetails.getCredentials();
             String role = credentials.getRole();
 
-            if ("ADMIN".equals(role)) {
-                return "/admin/indexAdmin";
+            if (Credentials.ADMIN_ROLE.equals(role)) {
+                return "redirect:/admin/indexAdmin";
             } else {
-                return "redirect:/user/profile";
+                return "redirect:/";
             }
         }
 
@@ -47,12 +47,12 @@ public class ProfileController {
     @GetMapping("/profile")
     public String showProfile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
         if (userDetails != null) {
-            if (userDetails.getCredentials().getRole().equals("ROLE_DEFAULT")) {
+            if (userDetails.getCredentials().getRole().equals("ROLE_DEFAULT") || userDetails.getCredentials().getRole().equals("DEFAULT")) {
                 model.addAttribute("authentication", userDetails);
                 return "/user/profile";
             } else if (userDetails.getCredentials().getRole().equals("ROLE_ADMIN")) {
                 model.addAttribute("barbiere", userDetails);
-                return "/admin/indexAdmin";
+                return "/admin/profile";
             }
         }
         // Se l'utente non è autenticato, reindirizza alla pagina di login

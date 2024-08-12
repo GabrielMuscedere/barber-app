@@ -44,7 +44,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
         // Crea un'autorità (ruolo) per l'utente utilizzando direttamente il ruolo memorizzato
-        GrantedAuthority authority = new SimpleGrantedAuthority(credentials.getRole().toString());
+        GrantedAuthority authority = new SimpleGrantedAuthority(credentials.getRole());
 
         // Crea un oggetto CustomUserDetails che include sia le credenziali che i dettagli dell'utente
         return new CustomUserDetails(credentials, utente, Collections.singletonList(authority));

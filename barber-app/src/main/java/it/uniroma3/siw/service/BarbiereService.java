@@ -11,7 +11,7 @@ public class BarbiereService {
     @Autowired
     private BarbiereRepository barbiereRepository;
 
-    public Barbiere findById(String id) {
+    public Barbiere findById(Long id) {
         return barbiereRepository.findById(id).get();
     }
 }
