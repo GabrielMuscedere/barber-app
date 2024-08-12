@@ -47,10 +47,10 @@ public class ProfileController {
     @GetMapping("/profile")
     public String showProfile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
         if (userDetails != null) {
-            if (userDetails.getCredentials().getRole().equals("DEFAULT")) {
+            if (userDetails.getCredentials().getRole().equals("ROLE_DEFAULT")) {
                 model.addAttribute("authentication", userDetails);
                 return "/user/profile";
-            } else if (userDetails.getCredentials().getRole().equals("ADMIN")) {
+            } else if (userDetails.getCredentials().getRole().equals("ROLE_ADMIN")) {
                 model.addAttribute("barbiere", userDetails);
                 return "/admin/indexAdmin";
             }
