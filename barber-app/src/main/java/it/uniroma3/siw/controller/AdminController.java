@@ -30,6 +30,7 @@ public class AdminController {
         return "admin/profile";
     }
 
+    /*
     @GetMapping("/admin/addBarber")
     public String addBarber(Model model, @AuthenticationPrincipal CustomUserDetails customUserDetails) {
         model.addAttribute("authentication", customUserDetails);
@@ -37,5 +38,6 @@ public class AdminController {
         model.addAttribute("barbers", barbers);
         return "admin/addBarber";
     }
+     */
 
 }

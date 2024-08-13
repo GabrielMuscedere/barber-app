@@ -16,7 +16,7 @@ public class Barbiere {
     private String cognome;
     private Date dataNascita;
 
-   // private String urlImmagine;
+    //private String urlImmagine;
 
     public Barbiere() {
     }

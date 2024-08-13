@@ -31,12 +31,4 @@ public class UtenteController {
     }
     */
 
-    @GetMapping("/profile/{id}")
-    public String viewProfile(@PathVariable("id") Long id, Model model) {
-        Utente utente = utenteService.findById(id);
-        model.addAttribute("utente", utente);
-        return "profile";
-    }
-
-
 }

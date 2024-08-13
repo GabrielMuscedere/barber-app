@@ -56,6 +56,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/","/index", "/about", "/register", "/css/**", "/js/**", "/images/**", "/contact", "/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login", "/register").permitAll()
                         .requestMatchers(HttpMethod.GET, "/admin/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/admin/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/user/**").hasRole("DEFAULT")
                         .requestMatchers("/profile").authenticated()
                         .requestMatchers(HttpMethod.GET,"/redirectByRole").authenticated() // Ensure this is included
