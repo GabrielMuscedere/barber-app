@@ -61,6 +61,7 @@ public class SecurityConfig {
                         .requestMatchers("/profile").authenticated()
                         .requestMatchers(HttpMethod.GET,"/redirectByRole").authenticated() // Ensure this is included
                         .requestMatchers(HttpMethod.GET, "/logout").authenticated() // Permetti l'accesso a /logout senza autenticazione
+                        .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")

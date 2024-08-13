@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
     <title>Barber App - Admin HomePage</title>
 </head>
-
 <body>
 <header>
     <nav class="navbar">
@@ -21,15 +19,12 @@
                     <img src="/images/profile1.png" alt="profile">
                 </a>
                 <div class="dropdown-content">
-                    <!-- Check if user is authenticated -->
                     <div th:if="${authentication != null}">
-                        <!-- Display the profile link and the username -->
                         <a href="/admin/profile">
                             <span th:text="${authentication.getUsername()}">Profile</span>
                         </a>
                         <a href="/logout"><span>logout</span></a>
                     </div>
-                    <!-- Display register and login links if user is not authenticated -->
                     <div th:if="${authentication == null}">
                         <a href="/register">Registrati</a>
                         <a href="/login">Login</a>
@@ -58,10 +53,10 @@
                     <label for="birthdate">Data di Nascita</label>
                     <input type="date" id="birthdate" th:field="*{dataNascita}" required>
                 </div>
-                <!--<div class="form-group">
+                <div class="form-group">
                     <label for="photo">Foto</label>
                     <input type="file" id="photo" name="file" required>
-                </div> -->
+                </div>
                 <button type="submit">Aggiungi Barbiere</button>
             </fieldset>
         </form>
@@ -70,11 +65,16 @@
         <h2>Barbieri</h2>
         <div class="carousel-container" th:if="${barbers.size() > 0}">
             <div id="carousel" class="carousel">
-                <!-- Carosello dei barbieri -->
-                <div th:each="barber : ${barbers}" class="carousel-item">
-                    <!--<img th:src="@{/images/barber__{barber.id}.jpg}" alt="Barbiere" /> -->
-                    <p th:text="${barber.nome}">Nome Barbiere</p>
-                    <p th:text="${barber.cognome}">Cognome Barbiere</p>
+                <div class="carousel-inner">
+                    <div th:each="barber : ${barbers}" class="carousel-item">
+                        <div class="barber-card">
+                            <img th:src="@{'/uploads/' + ${barber.imageUrl}}" alt="Barbiere" class="barber-image" />
+                            <div class="barber-info">
+                                <p th:text="${barber.nome}">Nome Barbiere</p>
+                                <p th:text="${barber.cognome}">Cognome Barbiere</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <button id="prev" class="carousel-control prev">&#10094;</button>
@@ -87,33 +87,30 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const carousel = document.querySelector('.carousel');
-        const items = carousel ? carousel.querySelectorAll('.carousel-item') : [];
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.carousel-item');
+        const carouselInner = document.querySelector('.carousel-inner');
         let currentIndex = 0;
 
-        function showItem(index) {
-            items.forEach(item => item.classList.remove('active'));
-            items[index].classList.add('active');
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            carouselInner.style.transform = `translateX(${offset}%)`;
         }
 
-        if (items.length > 0) {
-            document.getElementById('prev').addEventListener('click', function () {
-                currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
-                showItem(currentIndex);
-            });
-
-            document.getElementById('next').addEventListener('click', function () {
-                currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
-                showItem(currentIndex);
-            });
-
-            // Show the first item initially
-            showItem(currentIndex);
-        } else {
-            document.getElementById('prev').style.display = 'none';
-            document.getElementById('next').style.display = 'none';
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
         }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        document.getElementById('next').addEventListener('click', nextSlide);
+        document.getElementById('prev').addEventListener('click', prevSlide);
+
+        updateCarousel();
     });
 </script>
 </body>

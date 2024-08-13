@@ -16,7 +16,7 @@ public class Barbiere {
     private String cognome;
     private Date dataNascita;
 
-    //private String urlImmagine;
+    private String imageUrl;
 
     public Barbiere() {
     }
@@ -52,12 +52,12 @@ public class Barbiere {
     public void setDataNascita(Date dataNascita) {
         this.dataNascita = dataNascita;
     }
-    /*
-    public String getUrlImmagine() { return this.urlImmagine; }
 
-    public void setUrlImmagine(String urlImmagine) {
-        this.urlImmagine = urlImmagine;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-     */
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
