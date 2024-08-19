@@ -53,11 +53,6 @@ public class ProfileController {
         List<ServizioPrenotato> prenotazioni = userDetails.getUtente().getPrenotazioni();
         model.addAttribute("prenotazioni", prenotazioni);
 
-        // Debug: Stampa le prenotazioni recuperate dal database
-        prenotazioni.forEach(p -> {
-            System.out.println("Prenotazione: " + p.getId() + ", Data: " + p.getData());
-        });
-
         if (userDetails != null) {
             if (userDetails.getCredentials().getRole().equals("ROLE_DEFAULT") || userDetails.getCredentials().getRole().equals("DEFAULT")) {
                 model.addAttribute("authentication", userDetails);

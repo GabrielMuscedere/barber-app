@@ -17,9 +17,6 @@ public class ServizioPrenotato {
     private Long id;
 
     @NotNull
-    private LocalDate data;
-
-    @NotNull
     private LocalTime orarioInizio;
 
     private LocalTime orarioFine;
@@ -48,14 +45,6 @@ public class ServizioPrenotato {
 
     public void setGiornoLavorativo(GiornoLavorativo giornoLavorativo) {
         this.giornoLavorativo = giornoLavorativo;
-    }
-
-    public LocalDate getData() {
-        return data;
-    }
-
-    public void setData(LocalDate data) {
-        this.data = data;
     }
 
     public LocalTime getOrarioFine() {

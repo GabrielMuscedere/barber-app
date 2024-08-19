@@ -40,10 +40,11 @@
 </header>
 <div th:if="${!orariDisponibili.isEmpty()}">
     <div th:each="orario : ${orariDisponibili}">
-        <div>
-            <span th:text="'puoi prenotare un ' + ${servizio} + ' alle ore: ' + ${orario.toString()}"></span>
-        </div>
-
+        <a th:href="'/user/prenotaServizio/' + ${giorno.id} + '/' + ${orario.toString()} + '/' + ${servizio}">
+            <div>
+                <span th:text="'puoi prenotare un ' + ${servizio} + ' alle ore: ' + ${orario.toString()}"></span>
+            </div>
+        </a>
     </div>
 </div>
 </body>

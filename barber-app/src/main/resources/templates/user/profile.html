@@ -49,7 +49,7 @@ PROFILO DEFAULT
 <h1>Prenotazioni</h1>
 <div th:if="${prenotazioni.isEmpty()}">Non ci sono prenotazioni</div>
 <div th:each="prenotazione : ${prenotazioni}">
-    <span th:text="'Data: ' + ${prenotazione.data.toString()} + ' ora inizio: ' + ${prenotazione.orarioInizio.toString()} + ' ora fine: ' + ${prenotazione.orarioFine.toString()} + ' tipo servizio:' + ${prenotazione.tipoServizio} + ' Con il barbiere:' + ${prenotazione.getBarbiere().getNome()}"></span>
+    <span th:text="'Data: ' + ${prenotazione.getGiornoLavorativo().getData().toString()} + ' ora inizio: ' + ${prenotazione.orarioInizio.toString()} + ' ora fine: ' + ${prenotazione.orarioFine.toString()} + ' tipo servizio:' + ${prenotazione.tipoServizio} + ' Con il barbiere:' + ${prenotazione.getGiornoLavorativo().getBarbiere().getNome()}"></span>
     <!-- Aggiungi il pulsante delete -->
     <form th:action="@{/user/deletePrenotazione/{id}(id=${prenotazione.id})}" method="post">
         <button type="submit" >Cancella prenotazione</button>

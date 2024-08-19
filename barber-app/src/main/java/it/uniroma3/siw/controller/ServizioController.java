@@ -121,6 +121,32 @@ public class ServizioController {
         return "user/selezionaOrario";
     }
 
+    @GetMapping("/user/prenotaServizio/{idGiorno}/{orario}/{servizio}")
+    public String prenotaServizio(@PathVariable Long idGiorno,
+                                  @PathVariable String orario,
+                                  @PathVariable String servizio,
+                                  @AuthenticationPrincipal CustomUserDetails userDetails,
+                                  RedirectAttributes redirectAttributes){
+
+        GiornoLavorativo giornoLavorativo = giornoLavorativoService.findById(idGiorno);
+        LocalTime orarioInizio = LocalTime.parse(orario);
+
+        ServizioPrenotato servizioPrenotato = new ServizioPrenotato();
+
+        servizioPrenotato.setOrarioInizio(orarioInizio);
+        servizioPrenotato.setOrarioFine(orarioInizio.plusMinutes(servizioService.findById(servizio).getDurata()));
+        servizioPrenotato.setTipoServizio(servizio);
+        servizioPrenotato.setGiornoLavorativo(giornoLavorativoService.findById(idGiorno));
+        servizioPrenotato.setUtente(userDetails.getUtente());
+
+        servizioPrenotatoService.save(servizioPrenotato);
+
+        userDetails.getUtente().getPrenotazioni().add(servizioPrenotato);
+        utenteService.save(userDetails.getUtente());
+
+        return "redirect:/profile";
+    }
+
     /*
     @PostMapping("/user/selectedBarber/{idBarbiere}/selectedService/{nomeServizio}/prenota")
     public String prenotaServizio(@PathVariable Long idBarbiere,
