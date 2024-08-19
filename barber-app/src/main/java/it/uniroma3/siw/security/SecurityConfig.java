@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 
 import javax.sql.DataSource;
 
@@ -59,9 +60,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/admin/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/user/**").hasRole("DEFAULT")
                         .requestMatchers("/profile").authenticated()
+                        .requestMatchers("/uploads/**").permitAll()
                         .requestMatchers(HttpMethod.GET,"/redirectByRole").authenticated() // Ensure this is included
                         .requestMatchers(HttpMethod.GET, "/logout").authenticated() // Permetti l'accesso a /logout senza autenticazione
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
@@ -80,10 +82,19 @@ public class SecurityConfig {
                         exceptionHandling
                                 .accessDeniedPage("/index")
                 )
-                /*.sessionManagement(session -> session
+                .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 )
-                */
+                .headers(headers -> headers
+                        .addHeaderWriter((request, response) -> {
+                            if (request.getRequestURI().equals("/user/profile")) {
+                                response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+                                response.setHeader("Pragma", "no-cache");
+                                response.setDateHeader("Expires", 0);
+                            }
+                        })
+                )
+
                 .authenticationManager(authenticationManager(http));
 
 

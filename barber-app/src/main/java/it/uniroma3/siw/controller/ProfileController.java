@@ -2,8 +2,10 @@ package it.uniroma3.siw.controller;
 
 import it.uniroma3.siw.model.Credentials;
 import it.uniroma3.siw.model.CustomUserDetails;
+import it.uniroma3.siw.model.ServizioPrenotato;
 import it.uniroma3.siw.model.Utente;
 import it.uniroma3.siw.repository.CredentialsRepository;
+import it.uniroma3.siw.service.BarbiereService;
 import it.uniroma3.siw.service.ServizioService;
 import it.uniroma3.siw.service.UtenteService;
 import jakarta.servlet.ServletException;
@@ -20,12 +22,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class ProfileController {
 
     @Autowired private CredentialsRepository credentialsRepository;
     @Autowired private ServizioService servizioService;
+    @Autowired private BarbiereService barbiereService;
 
     @GetMapping("/redirectByRole")
     public String redirectByRole(@AuthenticationPrincipal CustomUserDetails customUserDetails) {
@@ -46,9 +50,18 @@ public class ProfileController {
 
     @GetMapping("/profile")
     public String showProfile(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
+        List<ServizioPrenotato> prenotazioni = userDetails.getUtente().getPrenotazioni();
+        model.addAttribute("prenotazioni", prenotazioni);
+
+        // Debug: Stampa le prenotazioni recuperate dal database
+        prenotazioni.forEach(p -> {
+            System.out.println("Prenotazione: " + p.getId() + ", Data: " + p.getData());
+        });
+
         if (userDetails != null) {
             if (userDetails.getCredentials().getRole().equals("ROLE_DEFAULT") || userDetails.getCredentials().getRole().equals("DEFAULT")) {
                 model.addAttribute("authentication", userDetails);
+                model.addAttribute("prenotazioni", userDetails.getUtente().getPrenotazioni());
                 return "/user/profile";
             } else if (userDetails.getCredentials().getRole().equals("ROLE_ADMIN")) {
                 model.addAttribute("barbiere", userDetails);
@@ -62,7 +75,7 @@ public class ProfileController {
     @GetMapping("/")
     public String getIndex(Model model, @AuthenticationPrincipal CustomUserDetails userDetails) {
         model.addAttribute("authentication", userDetails);
-        model.addAttribute("servizi", this.servizioService.findAll());
+        model.addAttribute("barbieri", this.barbiereService.findAll());
         return "index"; // Il nome del template Thymeleaf
     }
 

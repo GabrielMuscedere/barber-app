@@ -41,6 +41,12 @@
 		</div>
 	</nav>
 </header>
+<div th:if="${successMessage} != null" >
+	<ul>
+		<li th:text="${successMessage}"></li>
+	</ul>
+</div>
+
 <div class="carousel-container">
 	<div id="flex-container" class="flex-container">
 		<div class="flex-item"><img src="/images/barba_uomo.png" alt="Barba Uomo"></div>
@@ -51,15 +57,40 @@
 	</div>
 </div>
 <script src="/js/scorrimento.js"></script>
-	<section>
-		<h1>Servizi Disponibili : </h1>
-		<div th:if="${servizi.isEmpty()}">Non ci sono film nel sistema</div>
-		<ul>
-			<li th:each="servizio : ${servizi}">
-				<span th:text="${servizio.nome}"></span> - <span th:text="${servizio.prezzo}"></span>
-			</li>
-		</ul>
-	</section>
+
+<div class="barberHomePage-container" th:if="${authentication != null}">
+	<h1>Prenota un servizio con un nostro Barbiere!</h1>
+	<div th:if="${barbieri.isEmpty()}">Non ci sono barbieri nel sistema</div>
+		<div th:each="barbiere : ${barbieri}" class="barberHomePage-section">
+			<a th:href="@{'/user/selectedBarber' + '/' + ${barbiere.id} + '/selezionaServizio'}">
+				<div class="barberHomePage-image">
+					<img th:src="@{'/uploads/' + ${barbiere.imageUrl}}" alt="Barbiere" class="barber-image" >
+				</div>
+				<div class="barberHomePage-info">
+					<h2 th:text="${barbiere.nome} + ' ' + ${barbiere.cognome}"></h2>
+					<p>Data di nascita: <span th:text="${#dates.format(barbiere.dataNascita, 'dd/MM/yyyy')}"></span></p>
+				</div>
+			</a>
+		</div>
+</div>
+
+<div class="barberHomePage-container" th:if="${authentication == null}">
+	<h1>Prenota un servizio con un nostro Barbiere!</h1>
+	<div th:if="${barbieri.isEmpty()}">Non ci sono barbieri nel sistema</div>
+
+	<div th:each="barbiere : ${barbieri}" class="barberHomePage-section">
+		<a href="/login">
+			<div class="barberHomePage-image">
+				<img th:src="@{'/uploads/' + ${barbiere.imageUrl}}" alt="Barbiere" class="barber-image">
+			</div>
+			<div class="barberHomePage-info">
+				<h2 th:text="${barbiere.nome} + ' ' + ${barbiere.cognome}"></h2>
+				<p>Data di nascita: <span th:text="${#dates.format(barbiere.dataNascita, 'dd/MM/yyyy')}"></span></p>
+			</div>
+		</a>
+	</div>
+</div>
+
 	<footer>
 	</footer>
 </body>

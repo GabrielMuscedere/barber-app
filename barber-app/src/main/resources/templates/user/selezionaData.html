@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>barber-app - Seleziona Data</title>
+</head>
+
+<body>
+<header>
+    <nav class="navbar" >
+        <a href="/" class="logo">
+            <img src="/images/logo.png" alt="Logo">
+        </a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">Chi Siamo</a>
+            <a href="/contact">Contatti</a>
+            <div class="user-menu">
+                <a class="user-icon">
+                    <img src="/images/profile1.png" alt="profile">
+                </a>
+                <div class="dropdown-content">
+                    <!-- Check if user is authenticated -->
+                    <div th:if="${authentication != null}">
+                        <!-- Display the profile link and the username -->
+                        <a href="/profile">
+                            <span th:text="${authentication.getUsername()}">Profile</span>
+                        </a>
+                        <a href="/logout"><span>logout</span></a>
+                    </div>
+                    <!-- Display register and login links if user is not authenticated -->
+                    <div th:if="${authentication == null}">
+                        <a href="/register">Registrati</a>
+                        <a href="/login">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- Se ci sono errori, mostriamoli qui -->
+<div th:if="${errors} != null">
+    <ul>
+        <li th:each="error : ${errors}" th:text="${error.defaultMessage}"></li>
+    </ul>
+</div>
+
+<h1>Seleziona Data e Orario di Inizio</h1>
+
+<div th:if="${barbiere!=null}">
+    <div th:if="${barbiere.getGiorniLavorativi() == null}">
+        Il barbiere non ha giorni di lavoro disponibili
+    </div>
+    <div th:each="giorno : ${barbiere.getGiorniLavorativi()}">
+        <a th:href="@{'/user/' + ${giorno.id} + '/' + ${servizio.nome}}">
+            <div th:if="${giorno!=null}">
+                <span th:text="'Prenota un ' + ${servizio.getNome()} + 'con ' + ${barbiere.getNome()} + ' il giorno ' + ${giorno.getData().toString()}"></span>
+            </div>
+        </a>
+        <!-- "@{'/user/selectedBarber' + '/' + ${barbiere.id} + '/selectedService' +  '/' + ${servizio.nome}}"
+        <div th:if="${giorno.getOrariDisponibili().isEmpty()}">
+            <span th:text=" 'il giorno ' + ${giorno.getData().toString()} + ', il barbiere ' + ${barbiere.getNome()} + ' è pieno!' "></span>
+        </div>
+        -->
+
+    </div>
+</div>
+
+<!--
+<form th:action="@{'/user/selectedBarber' + '/' + ${barbiere.id} + '/selectedService' + '/' + ${servizio.nome} + '/prenota'}" th:object="${servizioPrenotato}" method="post">
+    <div>
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" th:field="*{data}" required>
+    </div>
+    <div>
+        <label for="orarioInizio">Orario di Inizio:</label>
+        <input type="time" id="orarioInizio" name="orarioInizio" th:field="*{orarioInizio}" required>
+    </div>
+    <button type="submit">Conferma Prenotazione</button>
+</form>
+-->
+</body>
+</html>
+
+

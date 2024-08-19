@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Past;
 
 
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 public class Utente {
@@ -30,6 +31,9 @@ public class Utente {
     @NotNull
     @Email
     private String email;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private List<ServizioPrenotato> prenotazioni;
 
     public Long getId() {
         return id;
@@ -79,6 +83,13 @@ public class Utente {
         this.email = email;
     }
 
+    public List<ServizioPrenotato> getPrenotazioni() {
+        return prenotazioni;
+    }
+
+    public void setPrenotazioni(List<ServizioPrenotato> prenotazioni) {
+        this.prenotazioni = prenotazioni;
+    }
 
     /*
     public Credential getCredential() {

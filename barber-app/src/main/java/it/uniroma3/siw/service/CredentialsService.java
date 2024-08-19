@@ -18,10 +18,8 @@ public class CredentialsService {
     private PasswordEncoder passwordEncoder;
 
     @Transactional
-    public Credentials save(Credentials credentials, Utente utente) {
-        credentials.setUtente(utente);
+    public Credentials save(Credentials credentials) {
         credentials.setRole(Credentials.DEFAULT_ROLE);
-        credentials.setUsername(credentials.getUsername());
         credentials.setPassword(passwordEncoder.encode(credentials.getPassword()));
         return credentialsRepository.save(credentials);
     }

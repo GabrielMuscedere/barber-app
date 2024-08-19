@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>barber-app - Admin HomePage</title>
+    <title>barber-app - admin Barber</title>
 </head>
 
 <body>
 <header>
-    <nav class="navbar" >
+    <nav class="navbar">
         <a href="/admin/indexAdmin" class="logo">
             <img src="/images/logo.png" alt="Logo">
         </a>
@@ -22,15 +22,12 @@
                     <img src="/images/profile1.png" alt="profile">
                 </a>
                 <div class="dropdown-content">
-                    <!-- Check if user is authenticated -->
                     <div th:if="${authentication != null}">
-                        <!-- Display the profile link and the username -->
                         <a href="/admin/profile">
                             <span th:text="${authentication.getUsername()}">Profile</span>
                         </a>
                         <a href="/logout"><span>logout</span></a>
                     </div>
-                    <!-- Display register and login links if user is not authenticated -->
                     <div th:if="${authentication == null}">
                         <a href="/register">Registrati</a>
                         <a href="/login">Login</a>
@@ -40,14 +37,16 @@
         </div>
     </nav>
 </header>
-<h1>PAGINA DI GESTIONE DEL SALONE</h1>
+<h2>Visualizza le prenotazioni del barbiere: </h2><h2 th:text="${giorno.getBarbiere().nome}"></h2>
 
 <div>
-    <a href="/admin/selezionaBarbiere"> aggiungi turni dei barbieri</a>
+    <div th:if="${giorno.getPrestazioni().isEmpty()}">
+        <h3 th:text="'non ci sono prenotazioni per questo barbiere per il giorno: (' + ${giorno.getData()} + ')'"></h3>
+    </div>
+    <div th:each="prenotazione : ${giorno.getPrestazioni()}">
+        <span th:text="${prenotazione.getData().toString()} + ', con il cliente: ' +  ${prenotazione.getUtente().nome} + ' ' + ${prenotazione.getUtente().cognome} + ', alle' + ${prenotazione.orarioInizio.toString()}"></span>
+    </div>
 </div>
 
-<footer>
-</footer>
 </body>
-
 </html>

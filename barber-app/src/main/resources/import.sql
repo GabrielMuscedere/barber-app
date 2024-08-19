@@ -1,4 +1,4 @@
-insert into servizio (nome, prezzo, descrizione, durata) values('taglio', 15, 'taglio capelli', 30);
-insert into servizio (nome, prezzo, descrizione, durata) values('barba', 10, 'barbetta', 15);
-insert into servizio (nome, prezzo, descrizione, durata) values('colore', 25, 'coloretto', 60);
+insert into servizio (nome, prezzo, descrizione, durata, image_name) values('Taglio', 15, 'taglio capelli', 30, 'forbici.jpg');
+insert into servizio (nome, prezzo, descrizione, durata, image_name) values('Barba', 10, 'barbetta', 15, 'lametta.jpg');
+insert into servizio (nome, prezzo, descrizione, durata, image_name) values('Colore', 25, 'coloretto', 60, 'colore.jpg');
 

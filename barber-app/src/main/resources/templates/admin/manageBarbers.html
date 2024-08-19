@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Barber App - Admin HomePage</title>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <a href="/admin/indexAdmin" class="logo">
+            <img src="/images/logo.png" alt="Logo">
+        </a>
+        <div class="nav-links">
+            <a href="/admin/indexAdmin">Home</a>
+            <div class="user-menu">
+                <a class="user-icon">
+                    <img src="/images/profile1.png" alt="profile">
+                </a>
+                <div class="dropdown-content">
+                    <div th:if="${authentication != null}">
+                        <a href="/admin/profile">
+                            <span th:text="${authentication.getUsername()}">Profile</span>
+                        </a>
+                        <a href="/logout"><span>logout</span></a>
+                    </div>
+                    <div th:if="${authentication == null}">
+                        <a href="/register">Registrati</a>
+                        <a href="/login">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="left-column">
+        <h2>Aggiungi Barbiere</h2>
+        <form th:action="@{/admin/manageBarbers}" th:object="${barbiere}" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend></legend>
+                <div class="form-group">
+                    <label for="first-name">Nome</label>
+                    <input type="text" id="first-name" th:field="*{nome}" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Cognome</label>
+                    <input type="text" id="last-name" th:field="*{cognome}" required>
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">Data di Nascita</label>
+                    <input type="date" id="birthdate" th:field="*{dataNascita}" required>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Foto</label>
+                    <input type="file" id="photo" name="file" required>
+                </div>
+                <button type="submit">Aggiungi Barbiere</button>
+            </fieldset>
+        </form>
+    </div>
+    <div class="right-column">
+        <h2>Barbieri</h2>
+        <div class="carousel-container" th:if="${barbers.size() > 0}">
+            <div id="carousel" class="carousel">
+                <div class="carousel-inner">
+                    <div th:each="barber : ${barbers}" class="carousel-item">
+                        <div class="barber-card">
+                            <a th:href="@{'/admin/barber' + '/' + ${barber.id}}">
+                                <img th:src="@{'/uploads/' + ${barber.imageUrl}}" alt="Barbiere" class="barber-image" />
+                                <div class="barber-info">
+                                    <p th:text="${barber.nome}">Nome Barbiere</p>
+                                    <p th:text="${barber.cognome}">Cognome Barbiere</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="prev" class="carousel-control prev">&#10094;</button>
+            <button id="next" class="carousel-control next">&#10095;</button>
+        </div>
+        <div th:if="${barbers.size() == 0}">
+            <p>Nessun barbiere presente.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.carousel-item');
+        const carouselInner = document.querySelector('.carousel-inner');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            carouselInner.style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        document.getElementById('next').addEventListener('click', nextSlide);
+        document.getElementById('prev').addEventListener('click', prevSlide);
+
+        updateCarousel();
+    });
+</script>
+</body>
+</html>

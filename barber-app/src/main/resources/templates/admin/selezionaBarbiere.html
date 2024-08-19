@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,57 +35,29 @@
     </nav>
 </header>
 
-<div class="container">
-    <div class="left-column">
-        <h2>Aggiungi Barbiere</h2>
-        <form th:action="@{/admin/addBarber}" th:object="${barbiere}" method="post" enctype="multipart/form-data">
-            <fieldset>
-                <legend></legend>
-                <div class="form-group">
-                    <label for="first-name">Nome</label>
-                    <input type="text" id="first-name" th:field="*{nome}" required>
-                </div>
-                <div class="form-group">
-                    <label for="last-name">Cognome</label>
-                    <input type="text" id="last-name" th:field="*{cognome}" required>
-                </div>
-                <div class="form-group">
-                    <label for="birthdate">Data di Nascita</label>
-                    <input type="date" id="birthdate" th:field="*{dataNascita}" required>
-                </div>
-                <div class="form-group">
-                    <label for="photo">Foto</label>
-                    <input type="file" id="photo" name="file" required>
-                </div>
-                <button type="submit">Aggiungi Barbiere</button>
-            </fieldset>
-        </form>
-    </div>
-    <div class="right-column">
-        <h2>Barbieri</h2>
-        <div class="carousel-container" th:if="${barbers.size() > 0}">
-            <div id="carousel" class="carousel">
-                <div class="carousel-inner">
-                    <div th:each="barber : ${barbers}" class="carousel-item">
-                        <div class="barber-card">
-                            <img th:src="@{'/uploads/' + ${barber.imageUrl}}" alt="Barbiere" class="barber-image" />
-                            <div class="barber-info">
-                                <p th:text="${barber.nome}">Nome Barbiere</p>
-                                <p th:text="${barber.cognome}">Cognome Barbiere</p>
-                            </div>
+<h2>Barbieri</h2>
+<div class="carousel-container" th:if="${barbers.size() > 0}">
+    <div id="carousel" class="carousel">
+        <div class="carousel-inner">
+            <div th:each="barber : ${barbers}" class="carousel-item">
+                <div class="barber-card">
+                    <a th:href="@{'/admin/giorniLavorativi' + '/' + ${barber.id}}">
+                        <img th:src="@{'/uploads/' + ${barber.imageUrl}}" alt="Barbiere" class="barber-image" />
+                        <div class="barber-info">
+                            <p th:text="${barber.nome}">Nome Barbiere</p>
+                            <p th:text="${barber.cognome}">Cognome Barbiere</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
-            <button id="prev" class="carousel-control prev">&#10094;</button>
-            <button id="next" class="carousel-control next">&#10095;</button>
-        </div>
-        <div th:if="${barbers.size() == 0}">
-            <p>Nessun barbiere presente.</p>
         </div>
     </div>
+    <button id="prev" class="carousel-control prev">&#10094;</button>
+    <button id="next" class="carousel-control next">&#10095;</button>
 </div>
-
+<div th:if="${barbers.size() == 0}">
+    <p>Nessun barbiere presente.</p>
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const slides = document.querySelectorAll('.carousel-item');
@@ -113,5 +85,3 @@
         updateCarousel();
     });
 </script>
-</body>
-</html>

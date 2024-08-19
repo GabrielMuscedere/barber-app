@@ -419,8 +419,8 @@ form button[type="submit"]:hover {
 }
 
 .barber-card {
-    width: 300px;
-    height: 400px;
+    width: 200px;
+    height: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -467,4 +467,396 @@ form button[type="submit"]:hover {
 .carousel-item {
     min-width: 100%;
     transition: transform 0.5s ease-in-out;
+}
+
+.barber-page .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Imposta l'altezza della sezione */
+}
+
+.barber-page .barber-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    width: 300px; /* Imposta una larghezza fissa */
+    text-align: center; /* Centra il testo */
+    margin-bottom: 20px; /* Spazio per i pulsanti */
+}
+
+.barber-page .barber-card:hover {
+    transform: scale(1.05);
+}
+
+.barber-page .barber-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.barber-page .barber-info {
+    padding: 10px;
+    text-align: left;
+}
+
+.barber-page .barber-info p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.barber-page .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Spazio tra i pulsanti */
+    padding: 10px;
+}
+
+.barber-page .button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.barber-page .button:hover {
+    background-color: #0056b3;
+}
+/* barber-edit-page */
+.barber-edit-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.barber-edit-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.barber-edit-left {
+    width: 45%;
+    margin-right: 20px; /* Added space between columns */
+}
+
+.barber-edit-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
+    margin-left: 20px; /* Added space between columns */
+}
+
+.barber-edit-save {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.barber-edit-delete {
+    margin-top: 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%; /* Make the delete button take the full width of its container */
+    max-width: 250px; /* Adjusted width for better alignment */
+}
+
+.barber-edit-card {
+    width: 250px; /* Increased width for better visual balance */
+    height: auto; /* Allow height to adjust based on content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: #ffffff; /* Ensure background color */
+    margin-bottom: 20px; /* Add space below the card */
+}
+
+.barber-edit-image {
+    width: 100%;
+    height: auto; /* Adjust height based on content */
+    object-fit: cover;
+}
+
+.barber-edit-info {
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+    text-align: center; /* Center align the text */
+    margin-top: 10px; /* Add space above the description */
+}
+
+.barber-edit-info p {
+    margin: 5px 0; /* Added some margin for spacing */
+    font-size: 1em;
+    color: #333;
+}
+
+/* -----------------*/
+/* barber Home Page */
+/* -----------------*/
+.barberHomePage-container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.barberHomePage-section {
+    display: flex;
+    flex-direction: row; /* Disposizione orizzontale */
+    align-items: center; /* Allinea il contenuto al centro verticalmente */
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.barberHomePage-section:hover {
+    transform: scale(1.05);
+}
+
+.barberHomePage-image {
+    flex-shrink: 0; /* L'immagine mantiene la sua dimensione */
+}
+
+.barberHomePage-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.barberHomePage-info {
+    flex-grow: 1; /* Questo permette all'elemento di crescere e occupare lo spazio rimanente */
+    margin-left: 20px; /* Spazio tra l'immagine e il testo */
+    text-align: left; /* Allinea il testo a sinistra */
+    display: flex; /* Utilizza flexbox per il contenuto interno */
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente il testo rispetto all'immagine */
+}
+
+.barberHomePage-info h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.barberHomePage-info p {
+    margin: 5px 0 0;
+    color: #666;
+}
+
+.barberHomePage-section a {
+    display: flex;
+    text-decoration: none;
+    color: inherit; /* Mantiene il colore del testo del link uguale al resto del testo */
+}
+
+.barberHomePage-section a:hover {
+    text-decoration: none; /* Rimuove la sottolineatura al passaggio del mouse, se lo desideri */
+}
+
+
+/* -----------------*/
+/* seleziona servizio */
+/* -----------------*/
+/* Centering the text for selected barber */
+.serviceSelectedBarber-selected {
+    text-align: center;
+    margin-bottom: 20px; /* Adds some space below the selected barber text */
+}
+
+/* Centering the title above the service cards */
+.serviceSelectedBarber-title {
+    text-align: center;
+    margin-bottom: 20px; /* Adds some space below the title */
+}
+
+.serviceSelectedBarber-title h3 {
+    margin: 0;
+    font-size: 1.5em; /* Adjust the font size if necessary */
+}
+
+/* Container for service cards with horizontal scrolling */
+.serviceSelectedBarber-container {
+    display: flex;
+    justify-content: center; /* Center the cards horizontally */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    padding: 10px 0;
+    white-space: nowrap; /* Prevent wrapping to a new line */
+}
+
+/* Each service card */
+.serviceSelectedBarber-card {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block; /* Ensure cards remain inline for horizontal scroll */
+}
+
+/* Service image */
+.serviceSelectedBarber-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+/* Card content */
+.serviceSelectedBarber-card-content {
+    margin-bottom: 15px;
+}
+
+/* Service card hover effect */
+.serviceSelectedBarber-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Select button style */
+.serviceSelectedBarber-select-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.serviceSelectedBarber-select-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Style to hide the scrollbar but still allow scrolling */
+.serviceSelectedBarber-container::-webkit-scrollbar {
+    display: none;
+}
+
+.serviceSelectedBarber-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+/*-----------------*/
+/* Seleziona data  */
+/*-----------------*/
+/* CSS specifico per selezionaData.html */
+.selezionaData-main {
+    padding: 20px;
+}
+
+.date-slider {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.days-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    flex-grow: 1;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.day-button {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.slider-btn {
+    background-color: #6a5acd;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev-btn {
+    margin-right: 10px;
+}
+
+.next-btn {
+    margin-left: 10px;
+}
+
+.time-slots {
+    margin-top: 20px;
+}
+
+.time-slot {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.time-slot span {
+    display: block;
+}
+
+.select-button {
+    background-color: #6a5acd;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.selected-info {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #4A4A4A;
+}
+
+.selected-info h2 {
+    margin: 0;
+    font-weight: bold;
+    color: #6a5acd;
 }

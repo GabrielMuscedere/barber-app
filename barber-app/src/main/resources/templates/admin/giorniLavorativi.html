@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Barber App - Admin HomePage</title>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <a href="/admin/indexAdmin" class="logo">
+            <img src="/images/logo.png" alt="Logo">
+        </a>
+        <div class="nav-links">
+            <a href="/admin/indexAdmin">Home</a>
+            <div class="user-menu">
+                <a class="user-icon">
+                    <img src="/images/profile1.png" alt="profile">
+                </a>
+                <div class="dropdown-content">
+                    <div th:if="${authentication != null}">
+                        <a href="/admin/profile">
+                            <span th:text="${authentication.getUsername()}">Profile</span>
+                        </a>
+                        <a href="/logout"><span>logout</span></a>
+                    </div>
+                    <div th:if="${authentication == null}">
+                        <a href="/register">Registrati</a>
+                        <a href="/login">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div th:if="${barber!=null}">
+    <div>
+        <h3><span th:text="${barber.nome} + ' ' + ${barber.cognome}"></span></h3>
+
+        <div>
+            <form th:action="@{'/admin/aggiungiGiorno' + '/' + ${barber.id}}" th:object="${giornoLavorativo}" method="post">
+                <fieldset>
+                    <legend></legend>
+                    <div class="form-group">
+                        <label for="date">Data del turno di lavoro</label>
+                        <input type="date" id="date" th:field="*{data}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inizoTurno">Inizio Turno</label>
+                        <input type="time" id="inizoTurno" th:field="*{inizioTurno}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fineTurno">Fine Turno</label>
+                        <input type="time" id="fineTurno" th:field="*{fineTurno}" required>
+                    </div>
+                    <button type="submit">Aggiungi giorno Lavorativo</button>
+                </fieldset>
+            </form>
+
+        </div>
+
+
+        <div th:if="${barber.getGiorniLavorativi().isEmpty()}">
+            Il barbiere non ha turni di lavoro
+        </div>
+        <div th:each="giorno : ${barber.getGiorniLavorativi()}">
+            <span th:text="${giorno.getData().toString()} + ',  inizio turno: ' +${giorno.getInizioTurno().toString()} + ', fine turno: ' + ${giorno.getFineTurno().toString()}"></span>
+            <a th:href="'/admin/visualizzaPrenotazioniBarbiere' + '/' + ${giorno.id}">visualizza prenotazioni</a>
+            <br>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

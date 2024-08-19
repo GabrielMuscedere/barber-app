@@ -10,4 +10,5 @@ import java.util.List;
 public interface BarbiereRepository extends CrudRepository<Barbiere, Long> {
 
     public boolean existsByNomeAndCognome(String nome, String cognome);
+
 }

@@ -46,7 +46,8 @@ public class AuthController {
             return "register";
         }
         utenteService.save(utente);
-        credentialsService.save(credentials, utente);
+        credentials.setUtente(utente);
+        credentialsService.save(credentials);
         return "redirect:/login";
     }
 
@@ -54,13 +55,5 @@ public class AuthController {
     public String showLoginForm(Model model) {
         return "login";
     }
-
-    /* Se hai già un metodo per mostrare il profilo, rinominalo o cambiane la rotta
-    @GetMapping("/auth/profile")
-    public String showAuthProfile(Model model) {
-        // Logica per mostrare il profilo
-        return "/user/profile";
-    }
-    */
 
 }

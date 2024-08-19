@@ -38,33 +38,37 @@
         </div>
     </nav>
 </header>
-PROFILO DEFAULT
 
-<div th:if="${errors}">
-    <ul>
-        <li th:each="error : ${errors}" th:text="${error.defaultMessage}"></li>
-    </ul>
+<div th:if="${barbiere != null}" class="serviceSelectedBarber-selected">
+    <h2>Hai selezionato il barbiere: <strong th:text="${barbiere.nome} + ' ' + ${barbiere.cognome}"></strong></h2>
+</div>
+<div class="serviceSelectedBarber-title">
+    <h3>Prenota un servizio:</h3>
 </div>
 
-<h1>Prenotazioni</h1>
-<div th:if="${prenotazioni.isEmpty()}">Non ci sono prenotazioni</div>
-<div th:each="prenotazione : ${prenotazioni}">
-    <span th:text="'Data: ' + ${prenotazione.data.toString()} + ' ora inizio: ' + ${prenotazione.orarioInizio.toString()} + ' ora fine: ' + ${prenotazione.orarioFine.toString()} + ' tipo servizio:' + ${prenotazione.tipoServizio} + ' Con il barbiere:' + ${prenotazione.getBarbiere().getNome()}"></span>
-    <!-- Aggiungi il pulsante delete -->
-    <form th:action="@{/user/deletePrenotazione/{id}(id=${prenotazione.id})}" method="post">
-        <button type="submit" >Cancella prenotazione</button>
-    </form>
-</div>
-<!--
-<div class="profile-container">
-    <div class="profile-box">
-        <p>Nome: <span th:text="${utente.nome}"></span></p>
-        <p>Cognome: <span th:text="${utente.cognome}"></span></p>
-        <p>Email: <span th:text="${utente.email}"></span></p>
+<!-- Container for the service cards -->
+<div class="serviceSelectedBarber-container">
+    <div th:each="servizio : ${servizi}" class="serviceSelectedBarber-card">
+        <div class="serviceSelectedBarber-card-content">
+            <!-- Assuming you have a 'imageUrl' field in your 'servizio' model -->
+            <img th:src="@{'/images/immagini_servizi/' + ${servizio.imageName}}" alt="Immagine del Servizio" class="serviceSelectedBarber-image"/>
+            <h4 th:text="${servizio.nome}">Servizio Nome</h4>
+            <p th:text="'Durata: ' + ${servizio.durata} + ' minuti'">durata</p>
+            <p th:text="'Costo: ' + ${servizio.prezzo} + ' euro'">€ Prezzo</p>
+        </div>
+        <a th:href="@{'/user/selectedBarber' + '/' + ${barbiere.id} + '/selectedService' +  '/' + ${servizio.nome}}">
+            <button  type="button" class="serviceSelectedBarber-select-btn">Seleziona</button>
+        </a>
     </div>
-    -->
+</div>
 
 <footer>
+
+
 </footer>
+
+
+
 </body>
+
 </html>

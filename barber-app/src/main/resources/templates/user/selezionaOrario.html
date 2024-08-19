@@ -38,33 +38,13 @@
         </div>
     </nav>
 </header>
-PROFILO DEFAULT
+<div th:if="${!orariDisponibili.isEmpty()}">
+    <div th:each="orario : ${orariDisponibili}">
+        <div>
+            <span th:text="'puoi prenotare un ' + ${servizio} + ' alle ore: ' + ${orario.toString()}"></span>
+        </div>
 
-<div th:if="${errors}">
-    <ul>
-        <li th:each="error : ${errors}" th:text="${error.defaultMessage}"></li>
-    </ul>
-</div>
-
-<h1>Prenotazioni</h1>
-<div th:if="${prenotazioni.isEmpty()}">Non ci sono prenotazioni</div>
-<div th:each="prenotazione : ${prenotazioni}">
-    <span th:text="'Data: ' + ${prenotazione.data.toString()} + ' ora inizio: ' + ${prenotazione.orarioInizio.toString()} + ' ora fine: ' + ${prenotazione.orarioFine.toString()} + ' tipo servizio:' + ${prenotazione.tipoServizio} + ' Con il barbiere:' + ${prenotazione.getBarbiere().getNome()}"></span>
-    <!-- Aggiungi il pulsante delete -->
-    <form th:action="@{/user/deletePrenotazione/{id}(id=${prenotazione.id})}" method="post">
-        <button type="submit" >Cancella prenotazione</button>
-    </form>
-</div>
-<!--
-<div class="profile-container">
-    <div class="profile-box">
-        <p>Nome: <span th:text="${utente.nome}"></span></p>
-        <p>Cognome: <span th:text="${utente.cognome}"></span></p>
-        <p>Email: <span th:text="${utente.email}"></span></p>
     </div>
-    -->
-
-<footer>
-</footer>
+</div>
 </body>
 </html>

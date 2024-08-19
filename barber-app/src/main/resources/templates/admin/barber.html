@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>barber-app - admin Barber</title>
+</head>
+
+<body>
+<header>
+    <nav class="navbar">
+        <a href="/admin/indexAdmin" class="logo">
+            <img src="/images/logo.png" alt="Logo">
+        </a>
+        <div class="nav-links">
+            <a href="/admin/indexAdmin">Home</a>
+            <a href="/admin/manageBarbers">Gestisci Barbieri</a>
+            <div class="user-menu">
+                <a class="user-icon">
+                    <img src="/images/profile1.png" alt="profile">
+                </a>
+                <div class="dropdown-content">
+                    <div th:if="${authentication != null}">
+                        <a href="/admin/profile">
+                            <span th:text="${authentication.getUsername()}">Profile</span>
+                        </a>
+                        <a href="/logout"><span>logout</span></a>
+                    </div>
+                    <div th:if="${authentication == null}">
+                        <a href="/register">Registrati</a>
+                        <a href="/login">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="barber-edit-page">
+    <h1>Modifica Barbiere</h1>
+    <div class="barber-edit-container">
+        <!-- Left Column: Form -->
+        <div class="barber-edit-left">
+            <form th:action="@{/admin/editBarber/{id}(id=${barber.id})}" method="post" th:object="${barber}" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Nome:</label>
+                    <b><span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span></b>
+                    <input type="text" id="first-name" th:field="*{nome}" />
+                </div>
+                <div class="form-group">
+                    <label>Cognome:</label>
+                    <b><span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span></b>
+                    <input type="text" id="last-name" th:field="*{cognome}" />
+                </div>
+                <div class="form-group">
+                    <label for="birthdate">Data di Nascita:</label>
+                    <b><span th:if="${#fields.hasErrors('dataNascita')}" th:errors="*{dataNascita}"></span></b>
+                    <input type="date" id="birthdate" th:field="*{dataNascita}" th:value="${#dates.format(barber.dataNascita, 'yyyy-MM-dd')}" />
+                </div>
+                <div class="form-group">
+                    <label for="photo">Foto</label>
+                    <b><span th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}"></span></b>
+                    <input type="file" id="photo" name="file"/>
+                </div>
+                <button type="submit" class="barber-edit-save">Salva Modifiche</button>
+            </form>
+        </div>
+
+        <!-- Right Column: Barber Card -->
+        <div class="barber-edit-right">
+            <div class="barber-edit-card">
+                <div class="barber-edit-image">
+                    <img th:src="@{'/uploads/' + ${barber.imageUrl}}" alt="Barbiere" class="barber-edit-image" />
+                </div>
+                <div class="barber-edit-info">
+                    <p><strong><span th:text="${barber.nome}"></span></strong></p>
+                    <p><strong><span th:text="${barber.cognome}"></span></strong></p>
+                    <p><strong><span th:text="${barber.dataNascita}"></span></strong></p>
+                </div>
+            </div>
+            <form th:action="@{/admin/deleteBarber/{id}(id=${barber.id})}" method="post">
+                <button type="submit" class="barber-edit-delete">Cancella Barbiere</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer></footer>
+</body>
+
+</html>

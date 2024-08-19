@@ -3,6 +3,9 @@ package it.uniroma3.siw.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity
 public class Servizio {
@@ -13,6 +16,7 @@ public class Servizio {
     private double prezzo;
     private String descrizione;
     private int durata;
+    private String imageName;
 
     public Servizio() {
     }
@@ -45,8 +49,16 @@ public class Servizio {
         return durata;
     }
 
-    public void setDuarta(int duarta) {
-        this.durata = duarta;
+    public void setDurata(int durata) {
+        this.durata = durata;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
 }
