@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Profilo Utente</title>
+    <title>Seleziona Orario</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -38,14 +38,29 @@
         </div>
     </nav>
 </header>
-<div th:if="${!orariDisponibili.isEmpty()}">
-    <div th:each="orario : ${orariDisponibili}">
-        <a th:href="'/user/prenotaServizio/' + ${giorno.id} + '/' + ${orario.toString()} + '/' + ${servizio}">
-            <div>
-                <span th:text="'puoi prenotare un ' + ${servizio} + ' alle ore: ' + ${orario.toString()}"></span>
-            </div>
-        </a>
+
+<div class="selezionaOrario-container">
+    <h1 class="selezionaOrario-title">Scegli un orario disponibile</h1>
+
+    <div th:if="${orariDisponibili == null}">
+        Non ci sono posti disponibili per questa giornata
+    </div>
+
+    <div th:if="${successMessage} != null">
+        <span th:text="${successMessage}"></span>
+    </div>
+
+    <div th:if="${!orariDisponibili.isEmpty()}">
+        <div th:each="orario : ${orariDisponibili.keySet()}" class="selezionaOrario-card">
+            <a th:href="'/user/prenotaServizio/' + ${giorno.id} + '/' + ${orario.toString()} + '/' + ${servizio}">
+                <div class="selezionaOrario-card-content">
+                    <div class="selezionaOrario-card-title" th:text="'Orario: ' + ${orario.toString()}"></div>
+                    <div class="selezionaOrario-card-time" th:text="'Prenota un ' + ${servizio}"></div>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
+
 </body>
 </html>

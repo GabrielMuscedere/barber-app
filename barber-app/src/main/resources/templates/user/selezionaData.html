@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>barber-app - Seleziona Data</title>
+    <title>Seleziona Data</title>
 </head>
 
 <body>
@@ -40,49 +40,55 @@
             </div>
         </div>
     </nav>
-</header>
-<!-- Se ci sono errori, mostriamoli qui -->
+</header><!-- Se ci sono errori, mostriamoli qui -->
 <div th:if="${errors} != null">
     <ul>
         <li th:each="error : ${errors}" th:text="${error.defaultMessage}"></li>
     </ul>
 </div>
 
-<h1>Seleziona Data e Orario di Inizio</h1>
+<h1 class="centered-title" th:text="'Seleziona la data in cui vuoi prenotare il ' + ${servizio.nome}"></h1>
 
-<div th:if="${barbiere!=null}">
-    <div th:if="${barbiere.getGiorniLavorativi() == null}">
-        Il barbiere non ha giorni di lavoro disponibili
+<div class="selezionaData-container">
+    <div th:if="${barbiere.getGiorniLavorativi() == null || barbiere.getGiorniLavorativi().isEmpty()}">
+        <p>Il barbiere non ha giorni di lavoro disponibili</p>
     </div>
-    <div th:each="giorno : ${barbiere.getGiorniLavorativi()}">
-        <a th:href="@{'/user/' + ${giorno.id} + '/' + ${servizio.nome}}">
-            <div th:if="${giorno!=null}">
-                <span th:text="'Prenota un ' + ${servizio.getNome()} + 'con ' + ${barbiere.getNome()} + ' il giorno ' + ${giorno.getData().toString()}"></span>
+    <div th:if="${barbiere.getGiorniLavorativi() != null && !barbiere.getGiorniLavorativi().isEmpty()}">
+        <div class="selezionaData-carousel">
+            <div class="selezionaData-cards">
+                <div th:each="giorno : ${giorniDopoOggi}" class="selezionaData-card">
+                    <a th:href="@{'/user/' + ${giorno.id} + '/' + ${servizio.nome}}">
+                        <div th:if="${giorno!=null}">
+                            <span th:text="'Prenota ' + ${servizio.getNome()} + ' con ' + ${barbiere.getNome()} + ' il ' + ${giorno.getData().toString()}"></span>
+                        </div>
+                    </a>
+                </div>
             </div>
-        </a>
-        <!-- "@{'/user/selectedBarber' + '/' + ${barbiere.id} + '/selectedService' +  '/' + ${servizio.nome}}"
-        <div th:if="${giorno.getOrariDisponibili().isEmpty()}">
-            <span th:text=" 'il giorno ' + ${giorno.getData().toString()} + ', il barbiere ' + ${barbiere.getNome()} + ' è pieno!' "></span>
         </div>
-        -->
-
     </div>
 </div>
 
-<!--
-<form th:action="@{'/user/selectedBarber' + '/' + ${barbiere.id} + '/selectedService' + '/' + ${servizio.nome} + '/prenota'}" th:object="${servizioPrenotato}" method="post">
-    <div>
-        <label for="data">Data:</label>
-        <input type="date" id="data" name="data" th:field="*{data}" required>
-    </div>
-    <div>
-        <label for="orarioInizio">Orario di Inizio:</label>
-        <input type="time" id="orarioInizio" name="orarioInizio" th:field="*{orarioInizio}" required>
-    </div>
-    <button type="submit">Conferma Prenotazione</button>
-</form>
--->
+<script>
+    const scrollContainer = document.querySelector('.selezionaData-cards');
+    const leftButton = document.createElement('button');
+    const rightButton = document.createElement('button');
+
+    leftButton.classList.add('scroll-button', 'left');
+    rightButton.classList.add('scroll-button', 'right');
+    leftButton.innerHTML = '&#8249;'; // Freccia sinistra
+    rightButton.innerHTML = '&#8250;'; // Freccia destra
+
+    document.querySelector('.selezionaData-container').appendChild(leftButton);
+    document.querySelector('.selezionaData-container').appendChild(rightButton);
+
+    leftButton.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+
+    rightButton.addEventListener('click', () => {
+        scrollContainer.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+</script>
+
 </body>
 </html>
-
-

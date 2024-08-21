@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,12 +24,6 @@ public class GiornoLavorativo {
     @NotNull
     private LocalTime fineTurno;
 
-    @Transient
-    private List<LocalTime> orariDisponibili;
-
-    @Transient
-    private List<LocalTime> orariOccupati;
-
     @ManyToOne
     private Barbiere barbiere;
 
@@ -38,8 +31,6 @@ public class GiornoLavorativo {
     private List<ServizioPrenotato> prestazioni;
 
     public GiornoLavorativo() {
-        this.orariDisponibili = new ArrayList<>();
-        this.orariOccupati = new ArrayList<>();
     }
 
     public LocalDate getData() {
@@ -72,22 +63,6 @@ public class GiornoLavorativo {
 
     public void setInizioTurno(LocalTime inizioTurno) {
         this.inizioTurno = inizioTurno;
-    }
-
-    public List<LocalTime> getOrariDisponibili() {
-        return orariDisponibili;
-    }
-
-    public void setOrariDisponibili(List<LocalTime> orariDisponibili) {
-        this.orariDisponibili = orariDisponibili;
-    }
-
-    public List<LocalTime> getOrariOccupati() {
-        return orariOccupati;
-    }
-
-    public void setOrariOccupati(List<LocalTime> orariOccupati) {
-        this.orariOccupati = orariOccupati;
     }
 
     public Barbiere getBarbiere() {

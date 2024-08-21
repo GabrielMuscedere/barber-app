@@ -22,6 +22,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 @Controller
@@ -55,6 +57,8 @@ public class ProfileController {
 
         if (userDetails != null) {
             if (userDetails.getCredentials().getRole().equals("ROLE_DEFAULT") || userDetails.getCredentials().getRole().equals("DEFAULT")) {
+                LocalDate today = LocalDate.now();
+                model.addAttribute("today", today);
                 model.addAttribute("authentication", userDetails);
                 model.addAttribute("prenotazioni", userDetails.getUtente().getPrenotazioni());
                 return "/user/profile";

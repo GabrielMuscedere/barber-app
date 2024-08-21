@@ -38,31 +38,42 @@
         </div>
     </nav>
 </header>
-PROFILO DEFAULT
 
-<div th:if="${errors}">
-    <ul>
-        <li th:each="error : ${errors}" th:text="${error.defaultMessage}"></li>
-    </ul>
-</div>
+<h1 class="centered-title">I tuoi dati</h1>
 
-<h1>Prenotazioni</h1>
-<div th:if="${prenotazioni.isEmpty()}">Non ci sono prenotazioni</div>
-<div th:each="prenotazione : ${prenotazioni}">
-    <span th:text="'Data: ' + ${prenotazione.getGiornoLavorativo().getData().toString()} + ' ora inizio: ' + ${prenotazione.orarioInizio.toString()} + ' ora fine: ' + ${prenotazione.orarioFine.toString()} + ' tipo servizio:' + ${prenotazione.tipoServizio} + ' Con il barbiere:' + ${prenotazione.getGiornoLavorativo().getBarbiere().getNome()}"></span>
-    <!-- Aggiungi il pulsante delete -->
-    <form th:action="@{/user/deletePrenotazione/{id}(id=${prenotazione.id})}" method="post">
-        <button type="submit" >Cancella prenotazione</button>
-    </form>
-</div>
-<!--
 <div class="profile-container">
     <div class="profile-box">
-        <p>Nome: <span th:text="${utente.nome}"></span></p>
-        <p>Cognome: <span th:text="${utente.cognome}"></span></p>
-        <p>Email: <span th:text="${utente.email}"></span></p>
+        <p><strong>Nome:</strong> <span th:text="${authentication.getUtente().getNome()}"></span></p>
+        <p><strong>Cognome:</strong> <span th:text="${authentication.getUtente().getCognome()}"></span></p>
+        <p><strong>Data di Nascita:</strong> <span th:text="${authentication.getUtente().getDataNascita().toString()}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${authentication.getUtente().getEmail().toString()}"></span></p>
+        <p><strong>Username:</strong> <span th:text="${authentication.getCredentials().getUsername()}"></span></p>
     </div>
-    -->
+</div>
+
+<h1 class="centered-title">Le tue prenotazioni</h1>
+<div class="userProfile-container">
+    <div class="userProfile-cards">
+        <div th:each="prenotazione : ${prenotazioni}" class="userProfile-card">
+            <div class="userProfile-card-content">
+                <p th:text="'Data: ' + ${prenotazione.getGiornoLavorativo().data}"></p>
+                <p th:text="'Ora inizio: ' + ${prenotazione.orarioInizio}"></p>
+                <p th:text="'Ora fine: ' + ${prenotazione.getOrarioFine().toString()}"></p>
+                <p th:text="'Tipo servizio: ' + ${prenotazione.getTipoServizio()}"></p>
+                <p th:text="'Con il barbiere: ' + ${prenotazione.getGiornoLavorativo().getBarbiere().getNome().toString()}"></p>
+            </div>
+            <div class="userProfile-card-action">
+                <div th:if="${prenotazione.getGiornoLavorativo().getData().isAfter(today)}">
+                    <a th:href="@{'/user/delete' + '/' + ${prenotazione.getId()}}" class="userProfile-cancel-btn">Cancella prenotazione</a>
+                </div>
+                <br>
+                <div class="userProfile-completed-box" th:if="${prenotazione.getGiornoLavorativo().getData().isBefore(today) || prenotazione.getGiornoLavorativo().getData().isEqual(today)}">
+                    <strong> completata </strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer>
 </footer>

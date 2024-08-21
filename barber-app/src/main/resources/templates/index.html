@@ -41,11 +41,6 @@
 		</div>
 	</nav>
 </header>
-<div th:if="${successMessage} != null" >
-	<ul>
-		<li th:text="${successMessage}"></li>
-	</ul>
-</div>
 
 <div class="carousel-container">
 	<div id="flex-container" class="flex-container">
@@ -73,7 +68,6 @@
 			</a>
 		</div>
 </div>
-
 <div class="barberHomePage-container" th:if="${authentication == null}">
 	<h1>Prenota un servizio con un nostro Barbiere!</h1>
 	<div th:if="${barbieri.isEmpty()}">Non ci sono barbieri nel sistema</div>
@@ -89,6 +83,10 @@
 			</div>
 		</a>
 	</div>
+</div>
+
+<div th:if="${successMessage} != null">
+	<span th:text="${successMessage}"></span>
 </div>
 
 	<footer>

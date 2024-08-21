@@ -36,24 +36,6 @@ public class GiornoLavorativoController {
                                  RedirectAttributes redirectAttributes) {
 
         Barbiere barbiere = barbiereService.findById(idBarber);
-        LocalTime orario = giornoLavorativo.getInizioTurno();
-
-        int maxIterations = 16; // 8 ore con intervalli di 30 minuti
-        int currentIterations = 0;
-
-        if (giornoLavorativo.getInizioTurno().isBefore(giornoLavorativo.getFineTurno())) {
-            System.out.println("sono nell'if");
-            while (orario.isBefore(giornoLavorativo.getFineTurno()) && currentIterations < maxIterations) {
-                System.out.println("sono nel while");
-                System.out.println(giornoLavorativo.getOrariDisponibili());
-                giornoLavorativo.getOrariDisponibili().add(orario);
-                orario = orario.plusMinutes(30);
-                currentIterations++;
-            }
-        } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "l'orario di inizo turno e fine turno non sono congruenti");
-            return "redirect:/admin/giorniLavorativi/{idBarber}";
-        }
 
         giornoLavorativo.setBarbiere(barbiere);
         giornoLavorativoService.save(giornoLavorativo);

@@ -4,6 +4,8 @@ package it.uniroma3.siw.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -31,7 +33,7 @@ public class Barbiere {
 
     private String imageUrl;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<GiornoLavorativo> giorniLavorativi;
 
     public Barbiere() {
