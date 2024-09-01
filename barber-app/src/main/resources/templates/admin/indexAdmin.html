@@ -10,27 +10,23 @@
 
 <body>
 <header>
-    <nav class="navbar" >
+    <nav class="navbar">
         <a href="/admin/indexAdmin" class="logo">
             <img src="/images/logo.png" alt="Logo">
         </a>
         <div class="nav-links">
             <a href="/admin/indexAdmin">Home</a>
-            <a href="/admin/manageBarbers">Gestisci Barbieri</a>
             <div class="user-menu">
                 <a class="user-icon">
                     <img src="/images/profile1.png" alt="profile">
                 </a>
                 <div class="dropdown-content">
-                    <!-- Check if user is authenticated -->
                     <div th:if="${authentication != null}">
-                        <!-- Display the profile link and the username -->
                         <a href="/admin/profile">
                             <span th:text="${authentication.getUsername()}">Profile</span>
                         </a>
                         <a href="/logout"><span>logout</span></a>
                     </div>
-                    <!-- Display register and login links if user is not authenticated -->
                     <div th:if="${authentication == null}">
                         <a href="/register">Registrati</a>
                         <a href="/login">Login</a>
@@ -40,14 +36,37 @@
         </div>
     </nav>
 </header>
-<h1>PAGINA DI GESTIONE DEL SALONE</h1>
 
-<div>
-    <a href="/admin/selezionaBarbiere"> aggiungi turni dei barbieri</a>
+<div class="indexAdmin-container">
+    <h1>PAGINA DI GESTIONE DEL SALONE</h1>
+
+    <div class="indexAdmin-sections">
+        <section class="indexAdmin-card">
+            <h2>Aggiungi Turni dei Barbieri</h2>
+            <p>Imposta o modifica i turni di lavoro dei barbieri.</p>
+            <a href="/admin/selezionaBarbiere" class="indexAdmin-btn">Aggiungi Turni</a>
+        </section>
+
+        <section class="indexAdmin-card">
+            <h2>Aggiungi servizi</h2>
+            <p>Gestisci i servizi che puo' offrire il tuo salone</p>
+            <a href="/admin/gestisciServizi" class="indexAdmin-btn">Gestisci Servizi</a>
+        </section>
+
+        <section class="indexAdmin-card">
+            <h2>Gestisci Barbieri</h2>
+            <p>Aggiungi o modifica i barbieri del tuo salone</p>
+            <a href="/admin/manageBarbers" class="indexAdmin-btn">Gestisci Barbieri</a>
+        </section>
+    </div>
 </div>
 
-<footer>
+<footer class="footer">
+    <div class="footer-content">
+        <p>&copy; 2024 Barber App. Tutti i diritti riservati.</p>
+    </div>
 </footer>
+
 </body>
 
 </html>

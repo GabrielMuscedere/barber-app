@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Profilo Utente</title>
+    <title>Seleziona Servizio</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
@@ -51,12 +51,12 @@
     <div th:each="servizio : ${servizi}" class="serviceSelectedBarber-card">
         <div class="serviceSelectedBarber-card-content">
             <!-- Assuming you have a 'imageUrl' field in your 'servizio' model -->
-            <img th:src="@{'/images/immagini_servizi/' + ${servizio.imageName}}" alt="Immagine del Servizio" class="serviceSelectedBarber-image"/>
+            <img th:src="@{'/uploads/' + ${servizio.imageName}}" alt="Immagine del Servizio" class="serviceSelectedBarber-image"/>
             <h4 th:text="${servizio.nome}">Servizio Nome</h4>
             <p th:text="'Durata: ' + ${servizio.durata} + ' minuti'">durata</p>
             <p th:text="'Costo: ' + ${servizio.prezzo} + ' euro'">€ Prezzo</p>
         </div>
-        <a th:href="@{'/user/selectedBarber' + '/' + ${barbiere.id} + '/selectedService' +  '/' + ${servizio.nome}}">
+        <a th:href="@{'/user/selectedBarber' + '/' + ${barbiere.id} + '/selectedService' +  '/' + ${servizio.getId()}}">
             <button  type="button" class="serviceSelectedBarber-select-btn">Seleziona</button>
         </a>
     </div>

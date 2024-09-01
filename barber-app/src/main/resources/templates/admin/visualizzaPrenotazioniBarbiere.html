@@ -37,14 +37,19 @@
         </div>
     </nav>
 </header>
-<h2>Visualizza le prenotazioni del barbiere: </h2><h2 th:text="${giorno.getBarbiere().nome}"></h2>
 
-<div>
+<div class="visualizzaPrenotazione-container">
+    <h2>Visualizza le prenotazioni del barbiere:</h2>
+    <h2 th:text="${giorno.getBarbiere().nome}"></h2>
+
     <div th:if="${giorno.getPrestazioni().isEmpty()}">
-        <h3 th:text="'non ci sono prenotazioni per questo barbiere per il giorno: (' + ${giorno.getData()} + ')'"></h3>
+        <h3 th:text="'Non ci sono prenotazioni per questo barbiere per il giorno: (' + ${giorno.getData()} + ')'"></h3>
     </div>
-    <div th:each="prenotazione : ${giorno.getPrestazioni()}">
-        <span th:text="${prenotazione.getData().toString()} + ', con il cliente: ' +  ${prenotazione.getUtente().nome} + ' ' + ${prenotazione.getUtente().cognome} + ', alle' + ${prenotazione.orarioInizio.toString()}"></span>
+
+    <div class="visualizzaPrenotazione-cards">
+        <div th:each="prenotazione : ${giorno.getPrestazioni()}" class="visualizzaPrenotazione-card">
+            <p th:text="${prenotazione.getGiornoLavorativo().getData().toString()} + ', con il cliente: ' +  ${prenotazione.getUtente().nome} + ' ' + ${prenotazione.getUtente().cognome} + ', alle ' + ${prenotazione.orarioInizio.toString()}"></p>
+        </div>
     </div>
 </div>
 

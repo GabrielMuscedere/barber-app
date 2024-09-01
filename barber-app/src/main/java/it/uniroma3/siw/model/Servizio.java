@@ -1,9 +1,7 @@
 package it.uniroma3.siw.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -11,12 +9,14 @@ import java.util.List;
 public class Servizio {
 
     @Id
-    private String nome;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
+    private String nome;
     private double prezzo;
-    private String descrizione;
     private int durata;
     private String imageName;
+    private Boolean eliminato;
 
     public Servizio() {
     }
@@ -37,14 +37,6 @@ public class Servizio {
         this.prezzo = prezzo;
     }
 
-    public String getDescrizione() {
-        return descrizione;
-    }
-
-    public void setDescrizione(String descrizione) {
-        this.descrizione = descrizione;
-    }
-
     public int getDurata() {
         return durata;
     }
@@ -61,5 +53,20 @@ public class Servizio {
         this.imageName = imageName;
     }
 
+    public Boolean getEliminato() {
+        return eliminato;
+    }
+
+    public void setEliminato(Boolean eliminato) {
+        this.eliminato = eliminato;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
 

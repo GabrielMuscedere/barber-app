@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>Barber App - Seleziona Barbiere</title>
+    <title>barber-app - Gestisci Servizio</title>
 </head>
 
 <body>
@@ -37,30 +37,18 @@
     </nav>
 </header>
 
-<main class="barber-selection-container">
-    <h2 class="center-title">Barbieri</h2>
-    <div class="barber-card-container">
-        <div th:each="barber : ${barbers}" class="barber-card">
-            <a th:href="@{'/admin/giorniLavorativi/' + ${barber.id}}" class="barber-link">
-                <img th:src="@{'/uploads/' + ${barber.imageUrl}}" alt="Barbiere" class="barber-image" />
-                <div class="barber-info">
-                    <p><strong th:text="${barber.nome}"></strong></p>
-                    <p><strong th:text="${barber.cognome}"></strong></p>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div th:if="${barbers.size() == 0}">
-        <p>Nessun barbiere presente.</p>
-    </div>
-</main>
+<!-- Aggiungi il titolo della pagina -->
+<h1 class="gestisciServizi-title-page">Gestisci i Servizi del Salone</h1>
 
-<footer class="footer">
-    <div class="footer-content">
-        <p>&copy; 2024 Barber App. Tutti i diritti riservati.</p>
+<div class="gestisciServizi-container">
+    <div th:each="servizio : ${servizi}" class="gestisciServizi-card">
+        <!-- Visualizza l'immagine del servizio -->
+        <img th:src="@{'/uploads/' + ${servizio.imageName}}" alt="Immagine del servizio" class="gestisciServizi-image"/>
+        <p class="gestisciServizi-title" th:text="${servizio.nome} + ' - ' + ${servizio.getDurata()} + ' minuti'"></p>
     </div>
-</footer>
+
+    <a href="/admin/aggiungiServizio" class="gestisciServizi-add-btn">Aggiungi Servizio</a>
+</div>
 
 </body>
-
 </html>

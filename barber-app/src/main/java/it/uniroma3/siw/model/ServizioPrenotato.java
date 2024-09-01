@@ -21,7 +21,8 @@ public class ServizioPrenotato {
 
     private LocalTime orarioFine;
 
-    private String tipoServizio;
+    @ManyToOne
+    private Servizio tipoServizio;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -63,11 +64,11 @@ public class ServizioPrenotato {
         this.orarioInizio = orarioInizio;
     }
 
-    public String getTipoServizio() {
+    public Servizio getTipoServizio() {
         return tipoServizio;
     }
 
-    public void setTipoServizio(String tipoServizio) {
+    public void setTipoServizio(Servizio tipoServizio) {
         this.tipoServizio = tipoServizio;
     }
 

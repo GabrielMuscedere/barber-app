@@ -52,10 +52,10 @@
 
     <div th:if="${!orariDisponibili.isEmpty()}">
         <div th:each="orario : ${orariDisponibili.keySet()}" class="selezionaOrario-card">
-            <a th:href="'/user/prenotaServizio/' + ${giorno.id} + '/' + ${orario.toString()} + '/' + ${servizio}">
+            <a th:href="'/user/prenotaServizio/' + ${giorno.id} + '/' + ${orario.toString()} + '/' + ${servizio.getId()}">
                 <div class="selezionaOrario-card-content">
                     <div class="selezionaOrario-card-title" th:text="'Orario: ' + ${orario.toString()}"></div>
-                    <div class="selezionaOrario-card-time" th:text="'Prenota un ' + ${servizio}"></div>
+                    <div class="selezionaOrario-card-time" th:text="'Prenota un ' + ${servizio.getNome()}"></div>
                 </div>
             </a>
         </div>

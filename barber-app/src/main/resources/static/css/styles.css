@@ -359,6 +359,14 @@ form button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+.barber-card-container {
+    display: flex;
+    flex-wrap: wrap; /* Permette di avvolgere le card su più righe se lo spazio è insufficiente */
+    justify-content: center; /* Centra le card orizzontalmente */
+    gap: 20px; /* Spazio tra le card */
+    padding: 0 20px;
+}
+
 .barber-card {
     background-color: #fff;
     border-radius: 10px;
@@ -1129,4 +1137,290 @@ form button[type="submit"]:hover {
     .userProfile-card {
         width: 220px;
     }
+}
+
+.barber-link {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: inherit; /* Mantiene il colore originale */
+}
+
+.barber-link:hover {
+    text-decoration: none; /* Mantiene la sottolineatura rimossa anche al passaggio del mouse */
+}
+
+/*----index Admin e footer ----*/
+/* Stile specifico per la pagina indexAdmin */
+.indexAdmin-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.indexAdmin-sections {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.indexAdmin-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 30%; /* Tre card per riga */
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.indexAdmin-card:hover {
+    transform: scale(1.05);
+}
+
+.indexAdmin-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.indexAdmin-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Footer generico */
+/* Footer generico */
+/* Footer */
+.footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+.center-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+/*---Aggiungi Servizio---*/
+
+/* Container principale per la form */
+.aggiungiServizio-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Stile del titolo */
+.aggiungiServizio-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #333;
+}
+
+/* Stile del gruppo di input */
+.aggiungiServizio-form-group {
+    margin-bottom: 15px;
+}
+
+/* Stile delle etichette */
+.aggiungiServizio-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Stile degli input */
+.aggiungiServizio-form-group input[type="text"],
+.aggiungiServizio-form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Stile del pulsante */
+.aggiungiServizio-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.aggiungiServizio-btn:hover {
+    background-color: #0056b3;
+}
+
+/*--Giorni Lavorativi--*/
+.giorniLavorativi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.giorno-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    flex: 1 1 calc(33.333% - 32px); /* Tre card per riga */
+    min-width: 280px;
+}
+
+.giorno-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.giorno-card p {
+    margin: 0;
+}
+
+.giorno-card p strong {
+    color: #333;
+}
+
+.visualizza-prenotazioni {
+    margin-top: 12px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.visualizza-prenotazioni:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.flash-message {
+    color: white;
+    background-color: green;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+/*--gestisci servizi--*/
+/*--gestisci servizi--*/
+.gestisciServizi-container {
+    padding: 20px;
+    max-width: 400px; /* Ridotta la larghezza per rendere la card più compatta */
+    margin: 0 auto;
+    text-align: center;
+}
+
+.gestisciServizi-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px; /* Ridotto il padding per una card più piccola */
+    margin-bottom: 20px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.gestisciServizi-card:hover {
+    transform: scale(1.05);
+}
+
+.gestisciServizi-title {
+    font-size: 18px; /* Ridotto il font per un look più compatto */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.gestisciServizi-add-btn {
+    display: inline-block;
+    padding: 8px 16px; /* Ridotto il padding del pulsante */
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Ridotto il margine superiore */
+}
+
+.gestisciServizi-add-btn:hover {
+    background-color: #0056b3;
+}
+
+.gestisciServizi-title-page {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.gestisciServizi-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/*--visualizza prenotazione--*/
+.visualizzaPrenotazione-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.visualizzaPrenotazione-cards {
+    margin-top: 20px;
+}
+
+.visualizzaPrenotazione-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.visualizzaPrenotazione-card p {
+    margin: 0;
+    font-size: 16px;
 }

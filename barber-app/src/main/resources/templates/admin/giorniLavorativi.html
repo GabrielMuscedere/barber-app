@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/styles.css">
-    <title>Barber App - Admin HomePage</title>
+    <title>Giorni Lavorativi</title>
 </head>
 <body>
 <header>
@@ -39,7 +39,7 @@
         <h3><span th:text="${barber.nome} + ' ' + ${barber.cognome}"></span></h3>
 
         <div>
-            <form th:action="@{'/admin/aggiungiGiorno' + '/' + ${barber.id}}" th:object="${giornoLavorativo}" method="post">
+            <form id="workdayForm" th:action="@{'/admin/aggiungiGiorno' + '/' + ${barber.id}}" th:object="${giornoLavorativo}" method="post">
                 <fieldset>
                     <legend></legend>
                     <div class="form-group">
@@ -56,21 +56,25 @@
                     </div>
                     <button type="submit">Aggiungi giorno Lavorativo</button>
                 </fieldset>
+                <!-- Mostra il messaggio di errore se presente -->
+                <p th:if="${errorMessage}" th:text="${errorMessage}" style="color:red;"></p>
             </form>
-
         </div>
 
-
-        <div th:if="${barber.getGiorniLavorativi().isEmpty()}">
-            Il barbiere non ha turni di lavoro
-        </div>
-        <div th:each="giorno : ${barber.getGiorniLavorativi()}">
-            <span th:text="${giorno.getData().toString()} + ',  inizio turno: ' +${giorno.getInizioTurno().toString()} + ', fine turno: ' + ${giorno.getFineTurno().toString()}"></span>
-            <a th:href="'/admin/visualizzaPrenotazioniBarbiere' + '/' + ${giorno.id}">visualizza prenotazioni</a>
-            <br>
+        <div class="giorniLavorativi">
+            <div th:if="${barber.getGiorniLavorativi().isEmpty()}">
+                Il barbiere non ha turni di lavoro
+            </div>
+            <div th:each="giorno : ${barber.getGiorniLavorativi()}" class="giorno-card">
+                <div class="giorno-card-content">
+                    <p><strong>Data:</strong> <span th:text="${giorno.getData().toString()}"></span></p>
+                    <p><strong>Inizio turno:</strong> <span th:text="${giorno.getInizioTurno().toString()}"></span></p>
+                    <p><strong>Fine turno:</strong> <span th:text="${giorno.getFineTurno().toString()}"></span></p>
+                    <a class="visualizza-prenotazioni" th:href="'/admin/visualizzaPrenotazioniBarbiere' + '/' + ${giorno.id}">visualizza prenotazioni</a>
+                </div>
+            </div>
         </div>
     </div>
-
 </div>
 
 </body>

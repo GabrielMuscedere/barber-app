@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 @Repository
-public interface ServizioRepository extends CrudRepository<Servizio, String> {
+public interface ServizioRepository extends CrudRepository<Servizio, Long> {
 
+    boolean existsByNome(String nome);
 }

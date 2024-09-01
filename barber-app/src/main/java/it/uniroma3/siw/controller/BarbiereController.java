@@ -36,7 +36,7 @@ public class BarbiereController {
     @Autowired
     private BarbiereRepository barbiereRepository;
 
-    @Value("${file.upload-dir}")
+    @Value("${file.uploadBarbiere-dir}")
     private String uploadDir;
 
     @RequestMapping(value = { "/admin/manageBarbers" }, method = RequestMethod.GET)
@@ -49,7 +49,10 @@ public class BarbiereController {
     }
 
     @RequestMapping(value = { "/admin/manageBarbers" }, method = RequestMethod.POST)
-    public String registerUser(@Valid @ModelAttribute("barbiere") Barbiere barbiere, BindingResult bindingResult, Model model, @RequestParam("file") MultipartFile file) {
+    public String registerUser(@Valid @ModelAttribute("barbiere") Barbiere barbiere,
+                               BindingResult bindingResult,
+                               Model model,
+                               @RequestParam("file") MultipartFile file) {
 
         this.barbiereValidator.validate(barbiere, bindingResult);
 

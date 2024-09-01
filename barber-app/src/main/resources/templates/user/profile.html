@@ -52,6 +52,11 @@
 </div>
 
 <h1 class="centered-title">Le tue prenotazioni</h1>
+
+<div class="flash-message" th:if="${successMessage != null}">
+    <span th:text="${successMessage}"></span>
+</div>
+
 <div class="userProfile-container">
     <div class="userProfile-cards">
         <div th:each="prenotazione : ${prenotazioni}" class="userProfile-card">
@@ -59,7 +64,7 @@
                 <p th:text="'Data: ' + ${prenotazione.getGiornoLavorativo().data}"></p>
                 <p th:text="'Ora inizio: ' + ${prenotazione.orarioInizio}"></p>
                 <p th:text="'Ora fine: ' + ${prenotazione.getOrarioFine().toString()}"></p>
-                <p th:text="'Tipo servizio: ' + ${prenotazione.getTipoServizio()}"></p>
+                <p th:text="'Tipo servizio: ' + ${prenotazione.getTipoServizio().getNome()}"></p>
                 <p th:text="'Con il barbiere: ' + ${prenotazione.getGiornoLavorativo().getBarbiere().getNome().toString()}"></p>
             </div>
             <div class="userProfile-card-action">
@@ -74,6 +79,18 @@
         </div>
     </div>
 </div>
+<script>
+    // Show the flash message and hide it after 5 seconds
+    document.addEventListener("DOMContentLoaded", function() {
+        const flashMessage = document.querySelector(".flash-message");
+        if (flashMessage) {
+            flashMessage.style.display = "block";
+            setTimeout(() => {
+                flashMessage.style.display = "none";
+            }, 5000); // 5 seconds
+        }
+    });
+</script>
 
 <footer>
 </footer>

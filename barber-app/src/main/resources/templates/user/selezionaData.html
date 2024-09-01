@@ -57,7 +57,7 @@
         <div class="selezionaData-carousel">
             <div class="selezionaData-cards">
                 <div th:each="giorno : ${giorniDopoOggi}" class="selezionaData-card">
-                    <a th:href="@{'/user/' + ${giorno.id} + '/' + ${servizio.nome}}">
+                    <a th:href="@{'/user/' + ${giorno.id} + '/' + ${servizio.getId()}}">
                         <div th:if="${giorno!=null}">
                             <span th:text="'Prenota ' + ${servizio.getNome()} + ' con ' + ${barbiere.getNome()} + ' il ' + ${giorno.getData().toString()}"></span>
                         </div>

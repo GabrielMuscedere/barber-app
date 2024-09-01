@@ -15,8 +15,11 @@ public class ServizioService {
         return servizioRepository.findAll();
     }
 
-    public Servizio findById(String id) {
+    public Servizio findById(Long id) {
         return servizioRepository.findById(id).get();
     }
 
+    public void save(Servizio servizio) {
+        servizioRepository.save(servizio);
+    }
 }

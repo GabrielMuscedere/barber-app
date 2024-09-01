@@ -67,15 +67,20 @@
             <div id="carousel" class="carousel">
                 <div class="carousel-inner">
                     <div th:each="barber : ${barbers}" class="carousel-item">
-                        <div class="barber-card">
-                            <a th:href="@{'/admin/barber' + '/' + ${barber.id}}">
-                                <img th:src="@{'/uploads/' + ${barber.imageUrl}}" alt="Barbiere" class="barber-image" />
-                                <div class="barber-info">
-                                    <p th:text="${barber.nome}">Nome Barbiere</p>
-                                    <p th:text="${barber.cognome}">Cognome Barbiere</p>
+                        <!-- Barber Card Start -->
+                        <a th:href="@{'/admin/barber/' + ${barber.id}}" class="barber-link">
+                            <div class="barber-edit-card">
+                                <div class="barber-edit-image">
+                                    <img th:src="@{'/uploads/' + ${barber.imageUrl}}" alt="Barbiere" class="barber-image" />
                                 </div>
-                            </a>
-                        </div>
+                                <div class="barber-edit-info">
+                                    <p><strong><span th:text="${barber.nome}"></span></strong></p>
+                                    <p><strong><span th:text="${barber.cognome}"></span></strong></p>
+                                    <p><strong><span th:text="${barber.dataNascita}"></span></strong></p>
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Barber Card End -->
                     </div>
                 </div>
             </div>
