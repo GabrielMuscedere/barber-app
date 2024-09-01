@@ -162,7 +162,7 @@ public class ServizioController {
         return "redirect:/profile";
     }
 
-    @GetMapping("/user/delete/{id}")
+    @PostMapping("/user/delete/{id}")
     public String deletePrenotazione(@PathVariable Long id,
                                      RedirectAttributes redirectAttributes) {
 
